@@ -1,8 +1,9 @@
 namespace ResturantManagementLibrary
 {
-    public class Ingrediemt
+    public class Ingredient
     {
         public string? Name; // ENUM?
         public int Quantity;
+        public Ingredient(){}
     }
 }

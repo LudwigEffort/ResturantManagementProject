@@ -4,10 +4,18 @@ namespace ResturantManagementLibrary
     {
         public int DishId;
         public string? Name;
-        public string? Description;
+        private string? _description;
         public double Price;
         public int Avaiable; //Da eliminare
         public string? Category; // ENUM?
-        public string? Ingredients; //Da cambiare con lista 
+        public List<Ingredient> ingredient;
+        public Dish(int dishId, string name, string description, double price, int avaiable, string category, List<Ingredient> ingredients){
+            DishId = dishId;
+            Name = name;
+            _description = description;
+            Price = price;
+            Avaiable = avaiable;
+            Category = category;
+        }
     }
 }
