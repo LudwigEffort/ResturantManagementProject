@@ -2,10 +2,10 @@ namespace ResturantManagementLibrary
 {
     public class Check
     {
-        public int CheckId;
-        public double Amount;
-        public double Tip;
+        private int _CheckId;
+        private double _Amount;
+        private double _Tip;
         public double Tax;
-        public bool IsPaid;
+        private bool _IsPaid;
     }
 }

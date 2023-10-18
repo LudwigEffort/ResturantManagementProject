@@ -2,7 +2,7 @@ namespace ResturantManagementLibrary
 {
     public class Dish
     {
-        public int DishId;
+        private int _DishId;
         public string? Name;
         private string? _description;
         public double Price;
@@ -11,7 +11,7 @@ namespace ResturantManagementLibrary
         public List<Ingredient> IngredientsList;
 
         public Dish(int dishId, string name, string description, double price, int avaiable, string category, List<Ingredient> ingredients){
-            DishId = dishId;
+            _DishId = dishId;
             Name = name;
             _description = description;
             Price = price;

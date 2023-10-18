@@ -3,7 +3,7 @@ namespace ResturantManagementLibrary
     public class Ingredient
     {
         public string? Name; // ENUM?
-        public int Quantity;
+        private int _Quantity;
         public Ingredient(){}
     }
 }

@@ -2,10 +2,10 @@ namespace ResturantManagementLibrary
 {
     public class Reservation
     {
-        public string? ReservationId;
-        public int PeopleNum;
-        public DateTime StartDate;
-        public DateTime EndDate;
+        private string? _ReservationId;
+        private int _PeopleNum;
+        private DateTime _StartDate;
+        private DateTime _EndDate;
         public Customer customer;
     }
 }
