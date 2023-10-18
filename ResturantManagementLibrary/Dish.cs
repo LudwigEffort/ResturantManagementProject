@@ -8,7 +8,8 @@ namespace ResturantManagementLibrary
         public double Price;
         public int Avaiable; //Da eliminare
         public string? Category; // ENUM?
-        public List<Ingredient> ingredient;
+        public List<Ingredient> IngredientsList;
+
         public Dish(int dishId, string name, string description, double price, int avaiable, string category, List<Ingredient> ingredients){
             DishId = dishId;
             Name = name;
@@ -16,6 +17,7 @@ namespace ResturantManagementLibrary
             Price = price;
             Avaiable = avaiable;
             Category = category;
+            IngredientsList = ingredients;
         }
     }
 }
