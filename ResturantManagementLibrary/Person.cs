@@ -1,10 +1,11 @@
-namespace ResturantManagementLibrary;
-
-public class Person
+namespace ResturantManagementLibrary
 {
-    public int id;
-    public string? name;
-    public string? lastName;
-    public string? email;
-    public string? phone;
+    public class Person
+    {
+        public int id;
+        public string? name;
+        public string? lastName;
+        public string? email;
+        public string? phone;
+    }
 }
