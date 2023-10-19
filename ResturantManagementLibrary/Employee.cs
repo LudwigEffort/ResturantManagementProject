@@ -4,6 +4,7 @@ namespace ResturantManagementLibrary
     {
         public enum RoleList
         {
+            WithoutRole,
             Manager,
             Chef,
             Waiter
