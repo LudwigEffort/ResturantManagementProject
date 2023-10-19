@@ -10,7 +10,10 @@ namespace ResturantManagementLibrary
         public string? Category; // ENUM?
         public List<Ingredient> IngredientsList;
         public string Description {
-            get {return _description;}
+            get 
+            {
+                return _description;
+            }
             set {
                 if (value == "")
                 {

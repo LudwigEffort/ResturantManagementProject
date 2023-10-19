@@ -2,7 +2,7 @@ namespace ResturantManagementLibrary
 {
     public class Reservation
     {
-        private string _reservationId;
+        private string _reservationId = String.Empty;
         private int _peopleNum;
         private DateTime _startDate;
         private DateTime _endDate;
