@@ -5,7 +5,8 @@ namespace ResturantManagementLibrary
 {
     class LoginMenu
     {
-        public void LoginForm(){
+        public bool LoginForm()
+        {
             Console.WriteLine($"Employee Login");
 
             Console.WriteLine($"Enter your email: ");
@@ -14,9 +15,18 @@ namespace ResturantManagementLibrary
             Console.WriteLine($"Enter your password: ");
             string? password = Console.ReadLine();
 
-            // Read DB and search if equals
+            if (true)
+            {
+                Console.WriteLine($"Login successful!");
+                return true;
+            }
+            else
+            {
+                Console.WriteLine($"Invalid email or password. Login failed!");
+                return false;
+            }
 
-            Console.WriteLine($"Login done. Welcome "); //Print name, lastname
+
         }
     }
 }

@@ -26,8 +26,6 @@ namespace ResturantManagementLibrary
 
             RoleList role = ChoiseRole();
 
-            //TODO: print role enums
-            //TODO: select my role 
             //TODO: manage date time for employee
 
             EmployeeController.NewEmployee(name, lastName, email, phone, password, role, DateTime.Now);
@@ -42,7 +40,7 @@ namespace ResturantManagementLibrary
             }
         }
 
-        public static RoleList ChoiseRole()
+        public static RoleList ChoiseRole() //? to learn
         {
             RoleList roleChoised = RoleList.WithoutRole;
 

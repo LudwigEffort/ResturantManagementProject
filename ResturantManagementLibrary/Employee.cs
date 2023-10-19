@@ -11,6 +11,10 @@ namespace ResturantManagementLibrary
         }
 
         private string? _password;
+        // public string? Password
+        // {
+        //     get => _password;
+        // }
         private RoleList _role;
         private DateTime _workingHours; // No time to adjust, should have been StartWorkingHours and EndWorkingHours
 
