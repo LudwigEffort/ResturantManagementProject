@@ -7,6 +7,7 @@ namespace ResturantManagementLibrary
 
         public void StartMainMenu()
         {
+            LoginMenu loginMenu = new();
             ShowMenuOption(options);
             selectOption = ReadChoise();
             do
@@ -15,6 +16,7 @@ namespace ResturantManagementLibrary
                 {
                     case 1: //? Login
                         Console.Clear();
+                        loginMenu.LoginForm();
                         break;
                     case 2: //? Sign up 
                         Console.Clear();
@@ -30,8 +32,6 @@ namespace ResturantManagementLibrary
                 }
             } while (selectOption != 1 && selectOption != 2 && selectOption != 0);
         }
-
-
         public void ShowMenuOption(string[] options)
         {
             foreach (var item in options)
@@ -39,7 +39,6 @@ namespace ResturantManagementLibrary
                 Console.WriteLine(item);
             }
         }
-
         public int ReadChoise()
         {
             int selectOption;
