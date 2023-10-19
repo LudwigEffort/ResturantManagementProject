@@ -15,7 +15,7 @@ namespace ResturantManagementLibrary
             Console.WriteLine($"Enter your password: ");
             string? password = Console.ReadLine();
 
-            if (true)
+            if (EmployeeController.IsLogged(email, password))
             {
                 Console.WriteLine($"Login successful!");
                 return true;

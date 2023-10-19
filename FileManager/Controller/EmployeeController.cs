@@ -5,26 +5,26 @@ namespace FileManager.Controller
 {
     public class EmployeeController
     {
-        //TODO: read db
-        //DOING: write db
+        //DOING: read db
+        //DONE: write db
 
-        public const string employeeDbPath = "../FileManager/Database/EmployeeDb.csv";
-        //RoleList[] roleLists = (RoleList[])Enum.GetValues(typeof(RoleList));
-        List<Employee> employees = new();
+        private const string employeeDbPath = "../FileManager/Database/EmployeeDb.csv";
 
-        private List<Employee> ReadEmployee()
+        private static List<Employee> ReadEmployees()
         {
             using var input = File.OpenText(employeeDbPath);
             input.ReadLine();
             input.ReadLine();
 
+            List<Employee> employees = new();
+
             while (true)
             {
-                string line = input.ReadLine();
+                string? line = input.ReadLine();
 
                 if (line is null)
                 {
-                    return employees;
+                    break;
                 }
 
                 var chunks = line.Split(',');
@@ -32,19 +32,31 @@ namespace FileManager.Controller
                 string name = chunks[0].Trim();
                 string lastName = chunks[1].Trim();
                 string email = chunks[2].Trim();
-                string password = chunks[3].Trim();
-                RoleList role;
-                DateTime workTime = Convert.ToDateTime(chunks[5].Trim());
+                string phone = chunks[3].Trim();
+                string password = chunks[4].Trim();
+                RoleList role = Enum.TryParse(chunks[5].Trim(), out RoleList parsedRole) ? parsedRole : RoleList.WithoutRole;
+                DateTime workingHours = Convert.ToDateTime(chunks[6].Trim());
 
+                Employee employee = new(name, lastName, email, phone, password, role, workingHours);
+                employees.Add(employee);
             }
+            return employees;
         }
-
 
         //? Sign up
         public static void NewEmployee(string name, string lastName, string email, string phone, string password, Employee.RoleList role, DateTime workingHours)
         {
             using var output = File.AppendText(employeeDbPath);
-            output.WriteLine($"{name}, {lastName}, {email}, {phone} {password}, {role}, {workingHours}");
+            output.WriteLine($"{name}, {lastName}, {email}, {phone}, {password}, {role}, {workingHours}");
+        }
+
+        //? Login 
+        public static bool IsLogged(string email, string password)
+        {
+            List<Employee> employees = ReadEmployees();
+            Employee employeeLogged = employees.Find(e => e.Email == email && e.Password == password);
+
+            return employeeLogged != null ? true : false;
         }
     }
 }
