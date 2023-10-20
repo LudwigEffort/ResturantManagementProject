@@ -13,7 +13,12 @@ namespace FileManager.Controller
             {
                 if (!File.Exists(dishDbPath))
                 {
-                    using (StreamWriter file = File.CreateText(dishDbPath)) { }
+                    using (StreamWriter file = File.CreateText(dishDbPath)) 
+                    {
+                        file.WriteLine($"- Dish Database");
+                        file.WriteLine($"Name, Description, Price, Category, Ingredients");
+                    }
+                    
                 }
             }
             catch (Exception ex)
