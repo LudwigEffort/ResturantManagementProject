@@ -34,11 +34,11 @@ namespace ResturantManagementLibrary
             }
             set
             {
+                _password = value;
                 if (string.IsNullOrEmpty(_password))
                 {
                     throw new ArgumentNullException(nameof(value), "Password can not be null!"); //Exception not working
                 }
-                _password = value;
             }
         }
 
