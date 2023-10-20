@@ -31,13 +31,13 @@ namespace ResturantManagementLibrary
             {
                 switch (selectOption)
                 {
-                    case 1: // Create new Dish
-                        DishCreate.CreateForm();
+                    case 1: //DONE: Create new Dish
+                        dishCreate.CreateForm();
                         break;
 
-                    case 2: // Edit Dish
+                    case 2: //TODO: Edit Dish
                         break;
-                    case 3: // Show all dishes
+                    case 3: //DONE: Show all dishes
                         dishShow.ShowDishes(dishes);
                         break;
                     case 0:
