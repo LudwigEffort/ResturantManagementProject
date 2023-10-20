@@ -6,19 +6,20 @@ namespace FileManager.Controller
     public class DishFileManager
     {
         private const string dishDbPath = "../FileManager/Database/DishDb.csv";
-        
-        public void CreateDishDb(){    //If File doesn't exist, create a new one
+
+        public void CreateDishDb()
+        {    //If File doesn't exist, create a new one
             try
             {
                 if (!File.Exists(dishDbPath))
                 {
-                    using (StreamWriter file = File.CreateText(dishDbPath)){}
+                    using (StreamWriter file = File.CreateText(dishDbPath)) { }
                 }
             }
             catch (Exception ex)
             {
                 throw new IOException("An error occurred while creating file: " + ex.Message);
-                
+
             }
         }
         private static List<Dish> ReadDish()
@@ -27,7 +28,7 @@ namespace FileManager.Controller
             input.ReadLine();
             input.ReadLine();
 
-            List<Dish> dishes = new();            
+            List<Dish> dishes = new();
 
             while (true)
             {
@@ -51,10 +52,11 @@ namespace FileManager.Controller
             }
             return dishes;
         }
-        public static void AddDish(string name, string description, double price, int avaiable, Dish.CategoryList category, List<IngredientManager.Ingredient> ingredients)
+        public static void AddDish(string name, string description, double price, Dish.CategoryList category, List<IngredientManager.Ingredient> ingredients)
         {
             using var output = File.AppendText(dishDbPath);
-            output.WriteLine($"{name}, {description}, {price}, {avaiable}, {category}, ");
+            string ingredientList = string.Join(", ", ingredients.Select(ingredient => ((int)ingredient).ToString()));
+            output.WriteLine($"{name}, {description}, {price}, {category}, {ingredientList}");
         }
     }
 }

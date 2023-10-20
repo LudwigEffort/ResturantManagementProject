@@ -2,8 +2,9 @@ namespace ResturantManagementLibrary
 {
     public class Dish
     {
-        public enum CategoryList
+        public enum CategoryList //TODO: move 
         {
+            NotCategory,
             Appetizer,
             FirstDish,
             SecondDish,
@@ -12,30 +13,20 @@ namespace ResturantManagementLibrary
         }
 
         //private int _dishId;
-        public string? Name { get; set; } = string.Empty;
-        private string _description = String.Empty;
+        public string Name { get; set; } = string.Empty;
+        public string Description = String.Empty;
         public double Price; //TODO: to private
-        public int Avaiable; //Da eliminare
-        public CategoryList category;
+        //public int Avaiable;
+        public CategoryList Category;
         public List<IngredientManager.Ingredient> Ingredients;
 
-        public string Description
+        public Dish(string name, string description, double price, CategoryList category, List<IngredientManager.Ingredient> ingredients)
         {
-            get
-            {
-                return _description;
-            }
-            set
-            {
-                if (value == "")
-                {
-                    _description = "Empy description";
-                }
-                else
-                {
-                    _description = value;
-                }
-            }
+            Name = name;
+            Description = description;
+            Price = price;
+            Category = category;
+            Ingredients = ingredients;
         }
     }
 }

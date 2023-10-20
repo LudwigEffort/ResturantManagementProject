@@ -16,7 +16,11 @@ namespace ResturantManagementLibrary
                 {
                     case 1: //? Login
                         Console.Clear();
-                        loginMenu.LoginForm();
+                        bool loggedIn = loginMenu.LoginForm();
+                        if (loggedIn == true)
+                        {
+                            DishCreate.CreateForm();
+                        }
                         break;
                     case 2: //? Sign up 
                         Console.Clear();
