@@ -22,11 +22,11 @@ namespace ResturantManagementLibrary
             WorkingHours = workingHours;
         }
 
-        public string Password
+        public string? Password
         {
             get
             {
-                if (_password == null)
+                if (string.IsNullOrEmpty(_password))
                 {
                     throw new InvalidOperationException("Password is null!");
                 }
@@ -34,7 +34,7 @@ namespace ResturantManagementLibrary
             }
             set
             {
-                if (value == null)
+                if (string.IsNullOrEmpty(_password))
                 {
                     throw new ArgumentNullException(nameof(value), "Password can not be null!");
                 }
