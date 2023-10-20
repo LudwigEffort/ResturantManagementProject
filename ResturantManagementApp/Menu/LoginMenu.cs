@@ -22,6 +22,7 @@ namespace ResturantManagementLibrary
             }
             else
             {
+                Console.Clear();
                 Console.WriteLine($"Invalid email or password. Login failed!");
                 return false;
             }

@@ -8,6 +8,7 @@ namespace ResturantManagementLibrary
         public void StartMainMenu()
         {
             LoginMenu loginMenu = new();
+            SubMenuAdmin subMenuAdmin = new();
             ShowMenuOption(options);
             selectOption = ReadChoise();
             do
@@ -19,12 +20,18 @@ namespace ResturantManagementLibrary
                         bool loggedIn = loginMenu.LoginForm();
                         if (loggedIn == true)
                         {
-                            DishCreate.CreateForm();
+                            subMenuAdmin.StartSubMenuAdmin();
+                        }
+                        else
+                        {
+                            StartMainMenu();
                         }
                         break;
                     case 2: //? Sign up 
                         Console.Clear();
                         SignUpMenu.SingUpForm();
+                        Console.Clear();
+                        StartMainMenu();
                         break;
                     case 0:
                         Console.Clear();
