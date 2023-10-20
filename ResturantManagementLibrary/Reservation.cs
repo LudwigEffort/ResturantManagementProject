@@ -2,29 +2,29 @@ namespace ResturantManagementLibrary
 {
     public class Reservation
     {
-        private string _reservationId = String.Empty;
+        // private string _reservationId = String.Empty;
         private int _peopleNum;
         private DateTime _startDate;
         private DateTime _endDate;
         public Customer customer;
 
-        public string ReservationId{
-            get
-            {
-                return _reservationId;
-            }
-            set
-            {
-                if (value == "")
-                {
-                    _reservationId = "Empy description";
-                }
-                else 
-                {
-                    _reservationId = value;
-                }
-            }
-        }
+        // public string ReservationId{
+        //     get
+        //     {
+        //         return _reservationId;
+        //     }
+        //     set
+        //     {
+        //         if (value == "")
+        //         {
+        //             _reservationId = "Empy description";
+        //         }
+        //         else 
+        //         {
+        //             _reservationId = value;
+        //         }
+        //     }
+        // }
         public int PeopleNum {
             get
             {

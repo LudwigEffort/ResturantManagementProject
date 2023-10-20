@@ -4,6 +4,7 @@ namespace ResturantManagementLibrary
     {
         public enum RoleList
         {
+            WithoutRole,
             Manager,
             Chef,
             Waiter
@@ -11,7 +12,8 @@ namespace ResturantManagementLibrary
 
         private string? _password;
         private RoleList _role;
-        private DateTime _workingHours;
+        private DateTime _workingHours; // No time to adjust, should have been StartWorkingHours and EndWorkingHours
+                                        //TODO: manage multi format date (us vs it)
 
         public Employee(string name, string lastName, string email, string phone, string password, RoleList role, DateTime workingHours) : base(name, lastName, email, phone)
         {

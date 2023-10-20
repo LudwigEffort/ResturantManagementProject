@@ -1,15 +1,20 @@
 namespace ResturantManagementLibrary
 {
-    class IngredientManager
+    public class IngredientManager
     {
-        public enum Ingredients
+        public enum Ingredient
         {
+            Empty,
             Pasta,
             Salsa,
             Carne,
-            Uova
+            Uova,
+            Formaggio,
+            Guanciale,
+            Insalata,
+            Patate
         }
 
-        private Dictionary<Ingredients, int> warehouse = new Dictionary<Ingredients, int>();
+        private Dictionary<Ingredient, int> warehouse = new Dictionary<Ingredient, int>();
     }
 }
