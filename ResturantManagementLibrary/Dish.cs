@@ -8,8 +8,7 @@ namespace ResturantManagementLibrary
             Appetizer,
             FirstDish,
             SecondDish,
-            Dessert,
-            Drinks
+            Dessert
         }
 
         public string Name { get; set; } = string.Empty;
