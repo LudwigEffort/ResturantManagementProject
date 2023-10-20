@@ -4,6 +4,7 @@ namespace ResturantManagementLibrary
     {
         public enum Ingredient
         {
+            Empty,
             Pasta,
             Salsa,
             Carne,

@@ -9,7 +9,19 @@ namespace FileManager.Controller
         //DONE: write db
 
         private const string employeeDbPath = "../FileManager/Database/EmployeeDb.csv";
-
+        public void CreateDishDb(){  //If File doesn't exist, create a new one
+            try
+            {
+                if (!File.Exists(employeeDbPath))
+                {
+                    using (StreamWriter file = File.CreateText(employeeDbPath)){}
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new IOException("An error occurred while creating file: " + ex.Message);
+            }
+        }
         private static List<Employee> ReadEmployees()
         {
             using var input = File.OpenText(employeeDbPath);
