@@ -17,7 +17,8 @@ namespace FileManager.Controller
             }
             catch (Exception ex)
             {
-                Console.WriteLine("An error occurred while creating file: " + ex.Message);
+                throw new IOException("An error occurred while creating file: " + ex.Message);
+                
             }
         }
         private static List<Dish> ReadDish()
@@ -44,8 +45,8 @@ namespace FileManager.Controller
                 string price = chunks[2].Trim();
                 string avaiable = chunks[3].Trim();
 
-                Dish dish = new(name, description, price, avaiable, );
-                dishes.Add(dish);
+                // Dish dish = new(name, description, price, avaiable, );
+                // dishes.Add(dish);
 
             }
             return dishes;
