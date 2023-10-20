@@ -1,3 +1,4 @@
+using System.Globalization;
 using FileManager.Controller;
 using static ResturantManagementLibrary.Employee;
 
@@ -26,9 +27,13 @@ namespace ResturantManagementLibrary
 
             RoleList role = ChoiseRole();
 
+            DateTime currentDate = DateTime.Now;
+            string formatDate = currentDate.ToString("yyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
+            DateTime date = Convert.ToDateTime(formatDate);
+
             //TODO: manage date time for employee
 
-            EmployeeController.NewEmployee(name, lastName, email, phone, password, role, DateTime.Now);
+            EmployeeController.NewEmployee(name, lastName, email, phone, password, role, date);
         }
 
         public static void PrintRole()
