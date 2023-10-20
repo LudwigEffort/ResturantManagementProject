@@ -6,9 +6,15 @@ namespace ResturantManagementLibrary
     {
         MainMenu mainMenu = new();
         DishCreate dishCreate = new();
+        DishShow dishShow = new();
         DishFileManager dishFileManager = new();
-        public void DishMenu(){
-            string[] options = 
+
+
+        public void DishMenu()
+        {
+            List<Dish> dishes = dishFileManager.ReadDish();
+
+            string[] options =
             {
                 "1. Add new dish",
                 "2. Edit dish", //TODO
@@ -26,22 +32,21 @@ namespace ResturantManagementLibrary
                 switch (selectOption)
                 {
                     case 1: // Create new Dish
-                    DishCreate.CreateForm();
-                    break;
+                        DishCreate.CreateForm();
+                        break;
 
                     case 2: // Edit Dish
-                    break;
-
+                        break;
                     case 3: // Show all dishes
-                    break; 
-
+                        dishShow.ShowDishes(dishes);
+                        break;
                     case 0:
-                    mainMenu.StartMainMenu();
-                    break;
+                        mainMenu.StartMainMenu();
+                        break;
 
                     default:
-                    Console.WriteLine($"Wrong Option!");
-                    break;
+                        Console.WriteLine($"Wrong Option!");
+                        break;
                 }
             } while (selectOption != 1 && selectOption != 2 && selectOption != 3 && selectOption != 0);
         }

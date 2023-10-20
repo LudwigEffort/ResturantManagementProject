@@ -13,12 +13,12 @@ namespace FileManager.Controller
             {
                 if (!File.Exists(dishDbPath))
                 {
-                    using (StreamWriter file = File.CreateText(dishDbPath)) 
+                    using (StreamWriter file = File.CreateText(dishDbPath))
                     {
                         file.WriteLine($"- Dish Database");
                         file.WriteLine($"Name, Description, Price, Category, Ingredients");
                     }
-                    
+
                 }
             }
             catch (Exception ex)
@@ -27,7 +27,8 @@ namespace FileManager.Controller
 
             }
         }
-        private static List<Dish> ReadDish()
+
+        public List<Dish> ReadDish()
         {
             List<Dish> dishes = new();
             using var input = File.OpenText(dishDbPath);
@@ -60,13 +61,22 @@ namespace FileManager.Controller
                         ingredients.Add(parsedIngredient);
                     }
                 }
-                
+
 
                 Dish dish = new(name, description, price, categoryList, ingredients);
                 dishes.Add(dish);
             }
             return dishes;
         }
+
+        //? Make list from db
+        // public static void MakeListDishes()
+        // {
+        //     List<Dish> dishes = ReadDish();
+
+        // }
+
+        //? CREATE
         public static void AddDish(string name, string description, double price, Dish.CategoryList category, List<IngredientManager.Ingredient> ingredients)
         {
             using var output = File.AppendText(dishDbPath);
