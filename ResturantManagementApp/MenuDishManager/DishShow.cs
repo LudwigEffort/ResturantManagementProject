@@ -5,13 +5,14 @@ namespace ResturantManagementLibrary
 {
     public class DishShow
     {
-        public void ShowDishes(){
-            Console.WriteLine($"Dishes list:");
-            // foreach (var dish in )
-            // {
+        // DishFileManager dishFileManager = new DishFileManager();
+        // public void ShowDishes(){
+        //     Console.WriteLine($"Dishes list:");
+        //     foreach (var dish in List<Dish> dishes)
+        //     {
                 
-            // }
-            //TODO Add mehotd Show all dishes
-        }
+        //     }
+        //     // TODO Add mehotd Show all dishes
+        // }
     }
 }

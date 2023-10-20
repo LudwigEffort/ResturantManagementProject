@@ -29,11 +29,11 @@ namespace FileManager.Controller
         }
         private static List<Dish> ReadDish()
         {
+            List<Dish> dishes = new();
             using var input = File.OpenText(dishDbPath);
             input.ReadLine();
             input.ReadLine();
 
-            List<Dish> dishes = new();
 
             while (true)
             {
@@ -48,19 +48,29 @@ namespace FileManager.Controller
 
                 string name = chunks[0].Trim();
                 string description = chunks[1].Trim();
-                string price = chunks[2].Trim();
-                string avaiable = chunks[3].Trim();
+                double price = double.Parse(chunks[2].Trim());
+                Dish.CategoryList categoryList = Enum.TryParse(chunks[3].Trim(), out Dish.CategoryList parsedCategory) ? parsedCategory : Dish.CategoryList.NotCategory;
+                var ingredientStrings = chunks[4].Split(';');
+                List<IngredientManager.Ingredient> ingredients = new();
 
-                // Dish dish = new(name, description, price, avaiable, );
-                // dishes.Add(dish);
+                foreach (var ingredientString in ingredientStrings)
+                {
+                    if (Enum.TryParse(ingredientString.Trim(), out IngredientManager.Ingredient parsedIngredient))
+                    {
+                        ingredients.Add(parsedIngredient);
+                    }
+                }
+                
 
+                Dish dish = new(name, description, price, categoryList, ingredients);
+                dishes.Add(dish);
             }
             return dishes;
         }
         public static void AddDish(string name, string description, double price, Dish.CategoryList category, List<IngredientManager.Ingredient> ingredients)
         {
             using var output = File.AppendText(dishDbPath);
-            string ingredientList = string.Join(", ", ingredients.Select(ingredient => ((int)ingredient).ToString()));
+            string ingredientList = string.Join("; ", ingredients.Select(ingredient => ((int)ingredient).ToString()));
             output.WriteLine($"{name}, {description}, {price}, {category}, {ingredientList}");
         }
     }
