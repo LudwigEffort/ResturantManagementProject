@@ -4,7 +4,7 @@ namespace ResturantManagementLibrary
 {
     public class SubDishMenu
     {
-        MainMenu mainMenu = new();
+        LoginMenu loginMenu = new();
         DishCreate dishCreate = new();
         DishShow dishShow = new();
         DishFileManager dishFileManager = new();
@@ -23,8 +23,8 @@ namespace ResturantManagementLibrary
             };
             int selectOption;
 
-            mainMenu.ShowMenuOption(options);
-            selectOption = mainMenu.ReadChoise();
+            loginMenu.ShowMenuOption(options);
+            selectOption = loginMenu.ReadChoise();
             dishFileManager.CreateDishDb();
 
             do
@@ -41,7 +41,7 @@ namespace ResturantManagementLibrary
                         dishShow.ShowDishes(dishes);
                         break;
                     case 0:
-                        mainMenu.StartMainMenu();
+                        loginMenu.StartLoginMenu();
                         break;
 
                     default:

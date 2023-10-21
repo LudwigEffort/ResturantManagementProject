@@ -6,7 +6,7 @@ namespace ResturantManagementLibrary
 {
     class SignUpMenu
     {
-        MainMenu mainMenu = new();
+        //MainMenu mainMenu = new();
         public void SingUpForm()
         {
             Console.WriteLine($"Employee Sign up");
@@ -36,7 +36,7 @@ namespace ResturantManagementLibrary
 
             EmployeeController.NewEmployee(name, lastName, email, phone, password, role, date);
 
-            mainMenu.StartMainMenu();
+            //mainMenu.StartMainMenu();
         }
 
         public static void PrintRole()

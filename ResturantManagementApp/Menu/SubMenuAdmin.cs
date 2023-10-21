@@ -2,7 +2,7 @@ namespace ResturantManagementLibrary
 {
     public class SubMenuAdmin
     {
-        MainMenu mainMenu = new();
+        LoginMenu loginMenu = new();
         SubDishMenu subDishMenu = new();
 
 
@@ -20,8 +20,8 @@ namespace ResturantManagementLibrary
             };
             int selectOption;
 
-            mainMenu.ShowMenuOption(options);
-            selectOption = mainMenu.ReadChoise();
+            loginMenu.ShowMenuOption(options);
+            selectOption = loginMenu.ReadChoise();
 
             do
             {
@@ -32,7 +32,7 @@ namespace ResturantManagementLibrary
                         subDishMenu.DishMenu(); //TODO: remove it and add Dish Menu Manager
                         break;
                     case 0:
-                        mainMenu.StartMainMenu();
+                        loginMenu.StartLoginMenu();
                         break;
                     default:
                         Console.WriteLine($"Wrong option!");
