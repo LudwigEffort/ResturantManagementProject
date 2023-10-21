@@ -10,13 +10,18 @@
 
 ### To do list (SABATO)
 
-- frontend edit (resturant app)
-- passare nomi e ingredienti al posto dei valori numerici della lista enu
-- tips adn tax in check class come costanti
-- metodo per calcolare il prezzo totale della lista dei piatti passati, e poi calcolare tax (tip solo ordine dal tavolo)
-- frontend creare ordine (client app)
-- stampare lista piatti per categoria
+- frontend edit (resturant app) -> _Paolo_
+- passare nomi e ingredienti al posto dei valori numerici della lista enu -> _Palo_
+- stampare lista piatti per categoria -> _Ludo_
+- completare frontend ordini -> _Ludo_
+
+- Dopo merge branch palo e ludo:
+  - singleton per admin app -> _Ludo_
+  - revisione di tutti i file manager e dei loro csv (con creazione dei file con seed iniziali) -> _Paolo_
+  - problema stampa dentro il csv check, viene stampato il tipo del dictonary -> _Paolo_
 
 ### To do list (domenica)
 
+- recap lavoro
 - iniziare gestine tavoli, ordini dai tavoli e metodo pagamento (quindi stampare check per nome o codice tavolo)
+- capire quali test effetuare per lunedi
