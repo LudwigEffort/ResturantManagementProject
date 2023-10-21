@@ -45,7 +45,7 @@ namespace FileManager.Controller
                     break;
                 }
 
-                var chunks = line.Split(',');
+                var chunks = line.Split('|');
 
                 string name = chunks[0].Trim();
                 string description = chunks[1].Trim();
@@ -81,7 +81,7 @@ namespace FileManager.Controller
         {
             using var output = File.AppendText(dishDbPath);
             string ingredientList = string.Join("; ", ingredients.Select(ingredient => ((int)ingredient).ToString()));
-            output.WriteLine($"{name}, {description}, {price}, {category}, {ingredientList}");
+            output.WriteLine($"{name} | {description} | {price} | {category} | {ingredientList}");
         }
     }
 }

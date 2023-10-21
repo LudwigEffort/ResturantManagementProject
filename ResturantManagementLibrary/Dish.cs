@@ -8,6 +8,7 @@ namespace ResturantManagementLibrary
             Appetizer,
             FirstDish,
             SecondDish,
+            SingleDish,
             Dessert
         }
 
