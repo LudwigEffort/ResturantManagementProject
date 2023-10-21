@@ -64,6 +64,7 @@ namespace FileManager.Controller
             return checks;
         }
 
+        //? read dish list into check
         private Dish ParseDish(string csvString)
         {
             var dishChunks = csvString.Split(',');
@@ -85,13 +86,14 @@ namespace FileManager.Controller
             return new Dish(name, description, price, categoryList, ingredients);
         }
 
-        public void AddCheck(List<Dish> dishes, bool forTable, double amount, double tip, double tax, bool isPaid)
+        //? make a check
+        public void AddCheck(List<Dish> dishes, string customerId, double amount, double tip, double tax, bool isPaid)
         {
             using var output = File.AppendText(CheckDbPath);
             foreach (var dish in dishes)
             {
-                string dishlist = string.Join("-", dishes.Select(elm => elm.ToString()));
-                output.WriteLine($"{dishlist} | {forTable} | {amount} | {tip} | {tax} | {isPaid}");
+                string dishlist = string.Join(", ", dishes.Select(elm => elm.ToString()));
+                output.WriteLine($"{dishlist} | {customerId} | {amount} | {tip} | {tax} | {isPaid}");
             }
         }
 
