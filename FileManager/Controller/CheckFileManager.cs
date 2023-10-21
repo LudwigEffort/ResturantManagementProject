@@ -94,8 +94,10 @@ namespace FileManager.Controller
         {
             Check check = new(selectedMenu, customerId, 0.0, false);
             double amount = check.CalculateTotalAmout(selectedMenu);
-            //? double taxed = check.Tax(amount);
-            AddCheck(selectedMenu, customerId, amount, check.Tax, check.Tip, true);
+            double taxed = check.CalcTax(amount);
+            double tipsed = check.CalcTips(amount);
+            amount = amount + taxed + tipsed;
+            AddCheck(selectedMenu, customerId, amount, taxed, tipsed, true);
         }
 
         //? make a check

@@ -5,8 +5,6 @@ namespace ResturantManagementLibrary
         public Dictionary<Dish, int> OrderedDishes { get; set; }
         private string _customerId;
         private double _amount;
-        public double Tip { get; private set; }
-        public double Tax { get; private set; }
         private bool _isPaid;
 
         public Check(Dictionary<Dish, int> orderedDishes, string customerId, double amount, bool isPaid)
@@ -14,8 +12,6 @@ namespace ResturantManagementLibrary
             OrderedDishes = orderedDishes;
             CustomerId = customerId;
             Amount = amount;
-            CalcTax();
-            CalcTips();
             IsPaid = isPaid;
         }
 
@@ -58,24 +54,14 @@ namespace ResturantManagementLibrary
             }
         }
 
-        public void CalcTax()
+        public double CalcTax(double amount)
         {
-            Tax = _amount * 0.22;
+            return amount * 0.22;
         }
 
-        public void CalcTax(double amount)
+        public double CalcTips(double amount)
         {
-            Tax = amount * 0.22;
-        }
-
-        public void CalcTips()
-        {
-            Tip = _amount * 0.05;
-        }
-
-        public void CalcTips(double amount)
-        {
-            Tip = amount * 0.05;
+            return amount * 0.05;
         }
 
         public bool IsPaid
@@ -98,7 +84,7 @@ namespace ResturantManagementLibrary
                 double dishPrice = dish.Price;
                 totalAmount += dishPrice * quantity;
             }
-            return totalAmount + Tax;
+            return totalAmount;
         }
 
     }
