@@ -12,21 +12,21 @@ namespace ResturantManagementLibrary
         public void StartLoginMenu()
         {
             EmployeeController employeeController = new(); //? from file manager
-            SubMenuAdmin subMenuAdmin = new();
             employeeController.CreateEmployeeDb();
 
-            ShowMenuOption(options);
-            selectOption = ReadChoise();
+            MenuUtils.ShowMenuOption(options);
+            selectOption = MenuUtils.ReadChoise();
 
             do
             {
                 switch (selectOption)
                 {
                     case 1: //? Login
-                        Console.Clear();
                         if (LoginForm() == true)
                         {
-                            subMenuAdmin.StartSubMenuAdmin(); //? start main menu
+                            Console.Clear();
+                            MainMenu mainMenu = new();
+                            mainMenu.StartMainMenu(); //? start main menu
                         }
                         else
                         {
@@ -34,10 +34,7 @@ namespace ResturantManagementLibrary
                         }
                         break;
                     case 2: //? Sign up 
-                        Console.Clear();
                         SingUpForm();
-                        Console.Clear();
-                        StartLoginMenu();
                         break;
                     case 0:
                         Console.Clear();
@@ -75,6 +72,7 @@ namespace ResturantManagementLibrary
 
         public void SingUpForm()
         {
+            Console.Clear();
             Console.WriteLine($"Employee Sign up");
 
             Console.WriteLine($"Enter your name: ");
@@ -102,7 +100,9 @@ namespace ResturantManagementLibrary
 
             EmployeeController.NewEmployee(name, lastName, email, phone, password, role, date);
 
-            LoginForm();
+            Console.Clear();
+            Console.WriteLine($"The {name} employee was created");
+            StartLoginMenu();
         }
 
         public static void PrintRole()
@@ -135,26 +135,6 @@ namespace ResturantManagementLibrary
 
             return roleChoised;
 
-        }
-
-        //? Menu utils
-        public void ShowMenuOption(string[] options)
-        {
-            foreach (var item in options)
-            {
-                Console.WriteLine(item);
-            }
-        }
-
-        public int ReadChoise()
-        {
-            int selectOption;
-            Console.WriteLine($"Select a option with 1-2:");
-            while (!int.TryParse(Console.ReadLine(), out selectOption))
-            {
-                Console.WriteLine($"Wrong Option!");
-            }
-            return selectOption;
         }
     }
 }
