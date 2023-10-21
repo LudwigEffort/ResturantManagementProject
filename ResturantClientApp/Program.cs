@@ -1,2 +1,11 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿namespace ResturantClientApp
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            MainMenu mainMenu = MainMenu.GetInstance();
+            mainMenu.StartMainMenu();
+        }
+    }
+}
