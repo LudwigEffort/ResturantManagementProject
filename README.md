@@ -12,8 +12,11 @@
 
 - frontend edit (resturant app) -> _Paolo_
 - passare nomi e ingredienti al posto dei valori numerici della lista enu -> _Palo_
+- gestione localizzazione in us (solo se hai finito le task precedenti entor la mattinata di domenica) -> _Paolo_
 - stampare lista piatti per categoria -> _Ludo_
 - completare frontend ordini -> _Ludo_
+
+**IL RESTO LO DOBBIAMO FARE DOPO IL MERGE DEI NOSTRI BRANCH**
 
 - Dopo merge branch palo e ludo:
   - singleton per admin app -> _Ludo_
