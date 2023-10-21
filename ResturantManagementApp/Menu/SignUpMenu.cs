@@ -6,7 +6,8 @@ namespace ResturantManagementLibrary
 {
     class SignUpMenu
     {
-        public static void SingUpForm()
+        MainMenu mainMenu = new();
+        public void SingUpForm()
         {
             Console.WriteLine($"Employee Sign up");
 
@@ -34,6 +35,8 @@ namespace ResturantManagementLibrary
             //TODO: manage date time for employee
 
             EmployeeController.NewEmployee(name, lastName, email, phone, password, role, date);
+
+            mainMenu.StartMainMenu();
         }
 
         public static void PrintRole()

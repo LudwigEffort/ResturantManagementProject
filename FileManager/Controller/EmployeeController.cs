@@ -9,12 +9,15 @@ namespace FileManager.Controller
         //DONE: write db
 
         private const string employeeDbPath = "../FileManager/Database/EmployeeDb.csv";
-        public void CreateDishDb(){  //If File doesn't exist, create a new one
+        public void CreateEmployeeDb(){  //If File doesn't exist, create a new one
             try
             {
                 if (!File.Exists(employeeDbPath))
                 {
-                    using (StreamWriter file = File.CreateText(employeeDbPath)){}
+                    using (StreamWriter file = File.CreateText(employeeDbPath)){
+                        file.WriteLine($"- Employee Database");
+                        file.WriteLine($"Name, LastName, Email, Phone, Password, Role, Working Time");
+                    }
                 }
             }
             catch (Exception ex)

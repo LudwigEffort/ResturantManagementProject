@@ -5,7 +5,7 @@ namespace ResturantManagementLibrary
 {
     public class DishCreate
     {
-        public static void CreateForm()
+        public void CreateForm()
         {
             Console.WriteLine($"Add a new dish");
 
@@ -20,11 +20,7 @@ namespace ResturantManagementLibrary
 
             CategoryList category = ChoiseCategory();
 
-            //PrintIngredient();
-
             List<IngredientManager.Ingredient> selectedIngredients = ChoiseIngredients();
-
-            //TODO: choise list of ingredients
 
             DishFileManager.AddDish(name, description, price, category, selectedIngredients);
 
@@ -92,7 +88,6 @@ namespace ResturantManagementLibrary
 
                     }
                 }
-
 
             } while (selectedIngredients.Count == 0);
 

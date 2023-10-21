@@ -1,3 +1,5 @@
+using FileManager.Controller;
+
 namespace ResturantManagementLibrary
 {
     public class MainMenu
@@ -7,8 +9,11 @@ namespace ResturantManagementLibrary
 
         public void StartMainMenu()
         {
+            EmployeeController employeeController = new();
             LoginMenu loginMenu = new();
+            SignUpMenu signUpMenu = new();
             SubMenuAdmin subMenuAdmin = new();
+            employeeController.CreateEmployeeDb();
             ShowMenuOption(options);
             selectOption = ReadChoise();
             do
@@ -29,7 +34,7 @@ namespace ResturantManagementLibrary
                         break;
                     case 2: //? Sign up 
                         Console.Clear();
-                        SignUpMenu.SingUpForm();
+                        signUpMenu.SingUpForm();
                         Console.Clear();
                         StartMainMenu();
                         break;

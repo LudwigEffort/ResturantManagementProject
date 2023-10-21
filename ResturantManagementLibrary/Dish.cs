@@ -8,15 +8,13 @@ namespace ResturantManagementLibrary
             Appetizer,
             FirstDish,
             SecondDish,
-            Dessert,
-            Drinks
+            Dessert
         }
 
-        //private int _dishId;
         public string Name { get; set; } = string.Empty;
         public string Description = String.Empty;
         public double Price; //TODO: to private
-        //public int Avaiable;
+        //public bool Avaiable; //TODO: for soft delite
         public CategoryList Category;
         public List<IngredientManager.Ingredient> Ingredients;
 

@@ -3,6 +3,7 @@ namespace ResturantManagementLibrary
     public class SubMenuAdmin
     {
         MainMenu mainMenu = new();
+        SubDishMenu subDishMenu = new();
 
 
         public void StartSubMenuAdmin()
@@ -28,7 +29,7 @@ namespace ResturantManagementLibrary
                 {
                     case 1:
                         Console.Clear();
-                        DishCreate.CreateForm(); //TODO: remove it and add Dish Menu Manager
+                        subDishMenu.DishMenu(); //TODO: remove it and add Dish Menu Manager
                         break;
                     case 0:
                         mainMenu.StartMainMenu();

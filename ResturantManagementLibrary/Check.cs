@@ -2,23 +2,31 @@ namespace ResturantManagementLibrary
 {
     public class Check
     {
-        private int _checkId;
+        public List<Dish> Dishes { get; set; }
+        private bool _forTable;
         private double _amount;
         private double _tip;
         public double Tax;
         private bool _isPaid;
 
-        public int CheckId{
-            get 
-            {
-                return _checkId;
-            }
-            set
-            {
-
-            }
+        public Check(List<Dish> dishes, bool forTable, double amount, double tip, double tax, bool isPaid)
+        {
+            Dishes = dishes;
+            ForTable = forTable;
+            Amount = amount;
+            Tip = tip;
+            Tax = tax;
+            IsPaid = isPaid;
         }
-        public double Amount {
+
+        public bool ForTable
+        {
+            get { return _forTable; }
+            set { _forTable = value; }
+        }
+
+        public double Amount
+        {
             get
             {
                 return _amount;
@@ -35,7 +43,9 @@ namespace ResturantManagementLibrary
                 }
             }
         }
-        public double Tip {
+
+        public double Tip
+        {
             get
             {
                 return _tip;
@@ -52,19 +62,15 @@ namespace ResturantManagementLibrary
                 }
             }
         }
-        public bool IsPaid{
+
+        public bool IsPaid
+        {
             get
             {
                 return _isPaid;
             }
-            set{}
+            set { _isPaid = value; }
         }
-        public Check(int checkId, double amount, double tip, double tax, bool isPaid){
-            CheckId = checkId;
-            Amount = amount;
-            Tip = tip;
-            Tax = tax;
-            IsPaid = isPaid;
-        }
+
     }
 }
