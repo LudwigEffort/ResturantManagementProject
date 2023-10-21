@@ -39,7 +39,9 @@ namespace ResturantManagementLibrary
                         break;
                     case 3: //? edit a dish
                         Console.WriteLine($"Not implement...");
-                        mainMenu.StartMainMenu();
+                        ShowDishes(dishes);
+                        string tempName = Console.ReadLine();
+                        dishFileManager.EditDishForm(tempName);
                         break;
                     case 4: //? delite a dish
                         Console.WriteLine($"Not implement...");
@@ -73,8 +75,8 @@ namespace ResturantManagementLibrary
             Console.WriteLine($"Enter a description of dish");
             string description = Console.ReadLine();
 
-            Console.WriteLine($"Enter a price of dish");
-            double price = Convert.ToDouble(Console.ReadLine()); //TODO: manage exception
+            string checkPrice = "Enter a price of dish";
+            double price = DoubleControl(checkPrice); //TODO: manage exception
 
             CategoryList category = ChoiseCategory();
 
@@ -175,6 +177,24 @@ namespace ResturantManagementLibrary
                 }
                 Console.WriteLine($"---------------------");
             }
+        }
+
+        // DA SPOSTARE NEGLI UTILS - CONTROLLO INPUT
+        public double DoubleControl(string checkPrice){
+            string userInput;
+            double number;
+
+            do
+            {
+                Console.WriteLine(checkPrice);
+                userInput = Console.ReadLine();
+                if (!double.TryParse(userInput, out _))
+                {
+                    Console.WriteLine("Input Error, try again");
+                }
+            } while (!double.TryParse(userInput, out number));
+
+            return number;
         }
 
         //? EDIT

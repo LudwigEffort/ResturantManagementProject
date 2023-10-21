@@ -83,5 +83,51 @@ namespace FileManager.Controller
             string ingredientList = string.Join("; ", ingredients.Select(ingredient => ((int)ingredient).ToString()));
             output.WriteLine($"{name} | {description} | {price} | {category} | {ingredientList}");
         }
+
+        public void EditDishForm(string name)
+        {
+            try
+            {
+                var lines = File.ReadAllLines(dishDbPath);
+                bool found = false;
+
+                for (int i = 1; i < lines.Length; i++)
+                {
+                    var chunks = lines[i].Split('|');
+
+                    if (chunks.Length >= 0 && chunks[0].Trim().ToLower() == name.Trim().ToLower())
+                    {
+                        Console.WriteLine("Inserisci i nuovi dati per il piatto:");
+                        Console.Write("Nome: ");
+                        chunks[0] = Console.ReadLine();
+                        Console.Write("Descrizione: ");
+                        chunks[1] = Console.ReadLine();
+                        Console.Write("Prezzo: ");
+                        chunks[2] = Console.ReadLine();
+                        Console.Write("Lista delle categorie: ");
+                        chunks[3] = Console.ReadLine();
+                        Console.Write("Ingredienti: ");
+                        chunks[4] = Console.ReadLine();
+
+                        lines[i] = string.Join('|', chunks);
+                        found = true;
+                    }
+
+                }
+
+                if (!found) //? NOT FOUND
+                {
+                    Console.WriteLine($"Dish with name: {name} not found.");
+                    return;
+                }
+
+                File.WriteAllLines(dishDbPath, lines);
+            }
+            catch (System.Exception ex)
+            {
+                throw new IOException("An error occurred while editing the file: " + ex.Message);  
+            }
+        }
+        
     }
 }
