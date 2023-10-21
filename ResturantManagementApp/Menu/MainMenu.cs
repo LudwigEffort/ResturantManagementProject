@@ -1,69 +1,70 @@
-using FileManager.Controller;
-
 namespace ResturantManagementLibrary
 {
     public class MainMenu
     {
-        string[] options = { "1. Login", "2. Sign Up", "0. Exit" };
-        int selectOption;
+        LoginMenu loginMenu = new();
 
         public void StartMainMenu()
         {
-            EmployeeController employeeController = new();
-            LoginMenu loginMenu = new();
-            SignUpMenu signUpMenu = new();
-            SubMenuAdmin subMenuAdmin = new();
-            employeeController.CreateEmployeeDb();
-            ShowMenuOption(options);
-            selectOption = ReadChoise();
+            string[] options =
+            {
+                "1. Dish Manager",
+                "2. Orders Manager",
+                "3. Tables Manager",
+                "4. Employees Manager",
+                "5. Warhouse Manager",
+                "6. Tax Manager",
+                "0. Exit"
+            };
+            int selectOption;
+
+            MenuUtils.ShowMenuOption(options);
+            selectOption = MenuUtils.ReadChoise();
+
             do
             {
                 switch (selectOption)
                 {
-                    case 1: //? Login
-                        Console.Clear();
-                        bool loggedIn = loginMenu.LoginForm();
-                        if (loggedIn == true)
-                        {
-                            subMenuAdmin.StartSubMenuAdmin();
-                        }
-                        else
-                        {
-                            StartMainMenu();
-                        }
+                    case 1: //? Dish Manager
+                        DishMenu dishMenu = new();
+                        dishMenu.StartDishMenu();
                         break;
-                    case 2: //? Sign up 
-                        Console.Clear();
-                        signUpMenu.SingUpForm();
-                        Console.Clear();
+                    case 2: //? Orders Manager
+                        Console.WriteLine($"Not implement");
                         StartMainMenu();
                         break;
-                    case 0:
-                        Console.Clear();
-                        Console.WriteLine($"Exit from program...");
+                    case 3: //? Tables Manager
+                        Console.WriteLine($"Not implement");
+                        StartMainMenu();
+                        break;
+                    case 4: //? Employees Manager
+                        Console.WriteLine($"Not implement");
+                        StartMainMenu();
+                        break;
+                    case 5: //? Warhouse Manager
+                        Console.WriteLine($"Not implement");
+                        StartMainMenu();
+                        break;
+                    case 6: //? Tax Manager
+                        Console.WriteLine($"Not implement");
+                        StartMainMenu();
+                        break;
+                    case 0: //? Exit
+                        loginMenu.StartLoginMenu();
                         break;
                     default:
                         Console.WriteLine($"Wrong option!");
                         break;
                 }
-            } while (selectOption != 1 && selectOption != 2 && selectOption != 0);
-        }
-        public void ShowMenuOption(string[] options)
-        {
-            foreach (var item in options)
-            {
-                Console.WriteLine(item);
-            }
-        }
-        public int ReadChoise()
-        {
-            int selectOption;
-            Console.WriteLine($"Select a option with 1-2:");
-            while (!int.TryParse(Console.ReadLine(), out selectOption))
-            {
-                Console.WriteLine($"Wrong Option!");
-            }
-            return selectOption;
+            } while (
+                        selectOption != 1 &&
+                        selectOption != 2 &&
+                        selectOption != 3 &&
+                        selectOption != 4 &&
+                        selectOption != 5 &&
+                        selectOption != 6 &&
+                        selectOption != 0
+                    );
         }
     }
 }

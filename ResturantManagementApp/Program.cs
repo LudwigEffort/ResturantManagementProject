@@ -4,8 +4,8 @@ namespace ResturantManagementLibrary
     {
         public static void Main()
         {
-            MainMenu menu = new();
-            menu.StartMainMenu();
+            LoginMenu menu = new();
+            menu.StartLoginMenu();
         }
     }
 }

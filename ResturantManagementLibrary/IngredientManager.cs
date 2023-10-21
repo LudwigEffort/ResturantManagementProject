@@ -12,7 +12,9 @@ namespace ResturantManagementLibrary
             Formaggio,
             Guanciale,
             Insalata,
-            Patate
+            Patate,
+            Pesce,
+            Impasto
         }
 
         private Dictionary<Ingredient, int> warehouse = new Dictionary<Ingredient, int>();
