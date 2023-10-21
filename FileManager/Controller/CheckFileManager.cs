@@ -27,42 +27,44 @@ namespace FileManager.Controller
         }
 
         // READ CHECK DB
-        public List<Check> ReadCheck()
-        {
-            List<Check> checks = new();
-            using var input = File.OpenText(CheckDbPath);
-            input.ReadLine();
-            input.ReadLine();
 
-            while (true)
-            {
-                string? line = input.ReadLine();
+        // public List<Check> ReadCheck()
+        // {
+        //     List<Check> checks = new();
+        //     using var input = File.OpenText(CheckDbPath);
+        //     input.ReadLine();
+        //     input.ReadLine();
 
-                if (line is null)
-                {
-                    break;
-                }
+        //     while (true)
+        //     {
+        //         string? line = input.ReadLine();
 
-                var chunks = line.Split('|');
+        //         if (line is null)
+        //         {
+        //             break;
+        //         }
 
-                var checkStrings = chunks[0].Split('-');
-                List<Dish> dishes = new();
-                foreach (var checkString in checkStrings)
-                {
-                    Dish dish = ParseDish(checkString);
-                    dishes.Add(dish);
-                }
-                string customerId = chunks[1].Trim();
-                double amount = double.Parse(chunks[2].Trim());
-                double tip = double.Parse(chunks[3].Trim());
-                double tax = double.Parse(chunks[4].Trim());
-                bool isPaid = bool.Parse(chunks[5].Trim());
+        //         var chunks = line.Split('|');
 
-                Check check = new(dishes, customerId, amount, tip, tax, isPaid);
-                checks.Add(check);
-            }
-            return checks;
-        }
+        //         var checkStrings = chunks[0].Split('-');
+
+        //         Dictionary<Dish, int> orderedDishes = new();
+        //         foreach (var checkString in checkStrings)
+        //         {
+        //             Dish dish = ParseDish(checkString);
+        //             orderedDishes.Add(dish, );
+        //         }
+        //         string customerId = chunks[1].Trim();
+        //         double amount = double.Parse(chunks[2].Trim());
+        //         double tip = double.Parse(chunks[3].Trim());
+        //         double tax = double.Parse(chunks[4].Trim());
+        //         bool isPaid = bool.Parse(chunks[5].Trim());
+
+        //         Check check = new(orderedDishes, customerId, amount, tip, tax, isPaid);
+        //         checks.Add(check);
+        //     }
+        //     return checks;
+        // }
 
         //? read dish list into check
         private Dish ParseDish(string csvString)
@@ -87,16 +89,11 @@ namespace FileManager.Controller
         }
 
         //? make a check
-        public void AddCheck(List<Dish> dishes, string customerId, double amount, double tip, double tax, bool isPaid)
+        public void AddCheck(Dictionary<Dish, int> orderedDishes, string customerId, double amount, double tip, double tax, bool isPaid)
         {
             using var output = File.AppendText(CheckDbPath);
-            foreach (var dish in dishes)
-            {
-                string dishlist = string.Join(", ", dishes.Select(elm => elm.ToString()));
-                output.WriteLine($"{dishlist} | {customerId} | {amount} | {tip} | {tax} | {isPaid}");
-            }
+            string dishlist = string.Join(", ", orderedDishes.Select(kv => $"{kv.Key} x{kv.Value}"));
+            output.WriteLine($"{dishlist} | {customerId} | {amount} | {tip} | {tax} | {isPaid}");
         }
-
-
     }
 }

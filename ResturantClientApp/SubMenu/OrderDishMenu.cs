@@ -27,8 +27,7 @@ namespace ResturantClientApp
                 switch (selectOption)
                 {
                     case 1: //? print all
-                        List<Dish> dishes = dishFileManager.ReadDish();
-                        MenuUtils.ShowDishes(dishes);
+
                         break;
                     case 2: //? print by category
                         break;
@@ -47,7 +46,9 @@ namespace ResturantClientApp
 
         public void CreateDishOrder()
         {
-            checkFileManager.AddCheck();
+            List<Dish> dishes = dishFileManager.ReadDish();
+            MenuUtils.ShowDishes(dishes);
+            //checkFileManager.AddCheck();
         }
     }
 }

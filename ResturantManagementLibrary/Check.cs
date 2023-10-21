@@ -2,16 +2,16 @@ namespace ResturantManagementLibrary
 {
     public class Check
     {
-        public List<Dish> Dishes { get; set; }
+        public Dictionary<Dish, int> OrderedDishes { get; set; }
         private string _customerId;
         private double _amount;
         private double _tip;
         public double Tax;
         private bool _isPaid;
 
-        public Check(List<Dish> dishes, string customerId, double amount, double tip, double tax, bool isPaid)
+        public Check(Dictionary<Dish, int> orderedDishes, string customerId, double amount, double tip, double tax, bool isPaid)
         {
-            Dishes = dishes;
+            OrderedDishes = orderedDishes;
             CustomerId = customerId;
             Amount = amount;
             Tip = tip;
