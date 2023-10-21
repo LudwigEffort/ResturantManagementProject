@@ -21,11 +21,11 @@ namespace ResturantManagementLibrary
             }
             set
             {
+                _address = value;
                 if (string.IsNullOrEmpty(_address))
                 {
                     throw new ArgumentNullException(nameof(value), "Andress can not be null!");
                 }
-                _address = value;
             }
         }
     }

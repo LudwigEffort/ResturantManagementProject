@@ -13,7 +13,7 @@ namespace FileManager.Controller
             {
                 if (!File.Exists(CheckDbPath))
                 {
-                    using (StreamWriter file  = File.CreateText(CheckDbPath))
+                    using (StreamWriter file = File.CreateText(CheckDbPath))
                     {
                         file.WriteLine($"- Check Database");
                         file.WriteLine($"Dishes, IsTable, Amout, Tip, Tax, IsPaid");
@@ -52,13 +52,13 @@ namespace FileManager.Controller
                     Dish dish = ParseDish(checkString);
                     dishes.Add(dish);
                 }
-                bool forTable = bool.Parse(chunks[1].Trim());
+                string customerId = chunks[1].Trim();
                 double amount = double.Parse(chunks[2].Trim());
                 double tip = double.Parse(chunks[3].Trim());
                 double tax = double.Parse(chunks[4].Trim());
                 bool isPaid = bool.Parse(chunks[5].Trim());
 
-                Check check = new(dishes, forTable, amount, tip, tax, isPaid);
+                Check check = new(dishes, customerId, amount, tip, tax, isPaid);
                 checks.Add(check);
             }
             return checks;
@@ -67,7 +67,7 @@ namespace FileManager.Controller
         private Dish ParseDish(string csvString)
         {
             var dishChunks = csvString.Split(',');
-            
+
             string name = dishChunks[0].Trim();
             string description = dishChunks[1].Trim();
             double price = double.Parse(dishChunks[2].Trim());
@@ -85,7 +85,8 @@ namespace FileManager.Controller
             return new Dish(name, description, price, categoryList, ingredients);
         }
 
-        public void AddCheck(List<Dish> dishes, bool forTable, double amount, double tip, double tax, bool isPaid){
+        public void AddCheck(List<Dish> dishes, bool forTable, double amount, double tip, double tax, bool isPaid)
+        {
             using var output = File.AppendText(CheckDbPath);
             foreach (var dish in dishes)
             {

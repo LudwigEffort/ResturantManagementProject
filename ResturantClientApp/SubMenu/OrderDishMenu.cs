@@ -18,8 +18,8 @@ namespace ResturantClientApp
             };
             int selectOption;
 
-            ResturantManagementLibrary.MenuUtils.ShowMenuOption(options);
-            selectOption = ResturantManagementLibrary.MenuUtils.ReadChoise();
+            MenuUtils.ShowMenuOption(options);
+            selectOption = MenuUtils.ReadChoise();
 
             do
             {
@@ -27,7 +27,7 @@ namespace ResturantClientApp
                 {
                     case 1: //? print all
                         List<Dish> dishes = dishFileManager.ReadDish();
-                        ResturantManagementLibrary.MenuUtils.ShowDishes(dishes);
+                        MenuUtils.ShowDishes(dishes);
                         break;
                     case 2: //? print by category
                         break;

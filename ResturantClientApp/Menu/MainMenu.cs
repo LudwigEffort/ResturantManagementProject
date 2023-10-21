@@ -37,6 +37,10 @@ namespace ResturantClientApp
                         OrderDishMenu orderDishMenu = new();
                         orderDishMenu.StartDishMenu();
                         break;
+                    case 0:
+                        Console.Clear();
+                        Console.WriteLine($"Exit...");
+                        return;
                     default:
                         Console.WriteLine($"Wrong option!");
                         break;

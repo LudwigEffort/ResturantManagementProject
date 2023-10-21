@@ -3,27 +3,44 @@ namespace ResturantManagementLibrary
     public class Check
     {
         public List<Dish> Dishes { get; set; }
-        private bool _forTable;
+        private string _customerId;
         private double _amount;
         private double _tip;
         public double Tax;
         private bool _isPaid;
 
-        public Check(List<Dish> dishes, bool forTable, double amount, double tip, double tax, bool isPaid)
+        public Check(List<Dish> dishes, string customerId, double amount, double tip, double tax, bool isPaid)
         {
             Dishes = dishes;
-            ForTable = forTable;
+            CustomerId = customerId;
             Amount = amount;
             Tip = tip;
             Tax = tax;
             IsPaid = isPaid;
         }
 
-        public bool ForTable
+        public string? CustomerId
         {
-            get { return _forTable; }
-            set { _forTable = value; }
+            get
+            {
+                if (string.IsNullOrEmpty(_customerId))
+                {
+                    throw new InvalidOperationException("Andress is null");
+                }
+                return _customerId;
+            }
+            set
+            {
+                _customerId = value;
+                if (string.IsNullOrEmpty(_customerId))
+                {
+                    throw new ArgumentNullException(nameof(value), "Andress can not be null!");
+                }
+            }
         }
+
+
+
 
         public double Amount
         {
