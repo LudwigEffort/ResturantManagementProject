@@ -16,7 +16,7 @@ namespace FileManager.Controller
                     using (StreamWriter file = File.CreateText(dishDbPath))
                     {
                         file.WriteLine($"- Dish Database");
-                        file.WriteLine($"Name, Description, Price, Category, Ingredients");
+                        file.WriteLine($"Name | Description | Price | Category | Ingredients");
                     }
 
                 }

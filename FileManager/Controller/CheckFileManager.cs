@@ -16,7 +16,7 @@ namespace FileManager.Controller
                     using (StreamWriter file = File.CreateText(CheckDbPath))
                     {
                         file.WriteLine($"- Check Database");
-                        file.WriteLine($"Dishes, IsTable, Amout, Tip, Tax, IsPaid");
+                        file.WriteLine($"Dishes | CustomerId | Amout | Tip | Tax | IsPaid");
                     }
                 }
             }

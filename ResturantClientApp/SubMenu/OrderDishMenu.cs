@@ -7,6 +7,7 @@ namespace ResturantClientApp
     {
         MainMenu mainMenuClient = MainMenu.GetInstance();
         DishFileManager dishFileManager = new();
+        CheckFileManager checkFileManager = new();
 
         public void StartDishMenu()
         {
@@ -46,7 +47,7 @@ namespace ResturantClientApp
 
         public void CreateDishOrder()
         {
-
+            checkFileManager.AddCheck();
         }
     }
 }
