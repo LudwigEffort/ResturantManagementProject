@@ -4,6 +4,7 @@ namespace FileManager.Controller
 {
     public class CheckFileManager
     {
+
         private const string CheckDbPath = "../FileManager/Database/CheckDb.csv";
 
         // CREATE CHECK DB IF DOESNT EXIST
@@ -86,6 +87,15 @@ namespace FileManager.Controller
                 }
             }
             return new Dish(name, description, price, categoryList, ingredients);
+        }
+
+        //? make a order
+        public void CreateDishOrder(Dictionary<Dish, int> selectedMenu, string customerId)
+        {
+            Check check = new(selectedMenu, customerId, 0.0, false);
+            double amount = check.CalculateTotalAmout(selectedMenu);
+            //? double taxed = check.Tax(amount);
+            AddCheck(selectedMenu, customerId, amount, check.Tax, check.Tip, true);
         }
 
         //? make a check
