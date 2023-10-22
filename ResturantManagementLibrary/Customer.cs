@@ -8,7 +8,7 @@ namespace ResturantManagementLibrary
         public Customer(string name, string lastName, string email, string phone, string address) : base(name, lastName, email, phone)
         {
             Address = address;
-            CustomerId = $"{name}.{lastName}.{address}";
+            CustomerId = $"{name}.{lastName}.{phone}.{address}";
         }
 
         public string? Address
