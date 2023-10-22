@@ -6,7 +6,6 @@ namespace FileManager.Controller
     public class DishFileManager
     {
         private const string dishDbPath = "../FileManager/Database/DishDb.csv";
-
         public void CreateDishDb()
         {    //If File doesn't exist, create a new one
             try
@@ -128,8 +127,9 @@ namespace FileManager.Controller
                                 Console.Write("Price: ");
                                 chunks[2] = Console.ReadLine();
                                 Console.Write("Category List: ");
-                                int tempCategory =  Convert.ToInt32(Console.ReadLine());
-                                chunks[3] = tempCategory.ToString();
+                                int categoryNumber = int.Parse(Console.ReadLine());
+                                Dish.CategoryList category = (Dish.CategoryList)categoryNumber;
+                                chunks[3] = category.ToString();
                                 Console.Write("Ingredients (divided by ';'): ");
                                 chunks[4] = Console.ReadLine();
                             break;
