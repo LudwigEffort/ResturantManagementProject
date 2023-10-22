@@ -12,10 +12,9 @@ namespace ResturantManagementLibrary
 
         private string? _password;
         private RoleList _role;
-        private DateTime _workingHours; // No time to adjust, should have been StartWorkingHours and EndWorkingHours
-                                        //TODO: manage multi format date (us vs it)
+        private TimeSpan _workingHours;
 
-        public Employee(string name, string lastName, string email, string phone, string password, RoleList role, DateTime workingHours) : base(name, lastName, email, phone)
+        public Employee(string name, string lastName, string email, string phone, string password, RoleList role, TimeSpan workingHours) : base(name, lastName, email, phone)
         {
             Password = password;
             Role = role;
@@ -51,7 +50,7 @@ namespace ResturantManagementLibrary
             }
         }
 
-        public DateTime WorkingHours
+        public TimeSpan WorkingHours
         {
             get { return _workingHours; }
             set
