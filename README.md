@@ -21,11 +21,10 @@
 
 - Dopo merge branch palo e ludo:
 
-  - singleton per admin app -> _Ludo_
-  - revisione di tutti i file manager e dei loro csv (con creazione dei file con seed iniziali) -> _Paolo_
+  - **DONE** singleton per admin app -> _Ludo_
   - problema stampa dentro il csv check, viene stampato il tipo del dictonary -> _Paolo_
 
-- recap lavoro
+- RECAP LAVORO
 - iniziare gestine tavoli, ordini dai tavoli e metodo pagamento (quindi stampare check per nome o codice tavolo)
 - capire quali test effetuare per lunedi
 - come gestire precedenza file
@@ -42,3 +41,4 @@
   - gestire se voglio ordinare piu piatti da diverse categorie
   - se non ci sono piatti per quella categoria
 - gestione localizzazione in us (solo se hai finito le task precedenti entor la mattinata di domenica) -> _Paolo_
+- refactor file manager + concorrenza file
