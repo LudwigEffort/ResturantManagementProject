@@ -1,5 +1,4 @@
 using ResturantManagementLibrary;
-using static ResturantManagementLibrary.IngredientManager;
 
 namespace FileManager.Controller
 {
@@ -7,7 +6,8 @@ namespace FileManager.Controller
     {
         private const string dishDbPath = "../FileManager/Database/DishDb.csv";
         public void CreateDishDb()
-        {    //If File doesn't exist, create a new one
+        {
+            //? If File doesn't exist, create a new one
             try
             {
                 if (!File.Exists(dishDbPath))
@@ -68,13 +68,6 @@ namespace FileManager.Controller
             return dishes;
         }
 
-        //? Make list from db
-        // public static void MakeListDishes()
-        // {
-        //     List<Dish> dishes = ReadDish();
-
-        // }
-
         //? CREATE
         public void AddDish(string name, string description, double price, Dish.CategoryList category, List<IngredientManager.Ingredient> ingredients)
         {
@@ -83,7 +76,7 @@ namespace FileManager.Controller
             output.WriteLine($"{name} | {description} | {price} | {category} | {ingredientList}");
         }
 
-        // EDIT DB
+        //? EDIT DB
         public void EditDishDB(string name, int selectOption, dynamic newValue)
         {
             try
@@ -96,39 +89,39 @@ namespace FileManager.Controller
                     var chunks = lines[i].Split('|');
 
                     if (chunks.Length >= 0 && chunks[0].Trim().ToLower() == name.Trim().ToLower())
-                    {    
+                    {
                         switch (selectOption)
                         {
                             case 1:
-                            chunks[0] = newValue;
-                            break;
+                                chunks[0] = newValue;
+                                break;
 
                             case 2:
-                            chunks[1] = newValue;
-                            break;
+                                chunks[1] = newValue;
+                                break;
 
                             case 3:
-                            chunks[2] = newValue.ToString();
-                            break;
+                                chunks[2] = newValue.ToString();
+                                break;
 
                             case 4:
-                            chunks[3] = newValue.ToString();
-                            break;
-                            
+                                chunks[3] = newValue.ToString();
+                                break;
+
                             case 5:
-                            chunks[4] = newValue.ToString();
-                            break;
+                                chunks[4] = newValue.ToString();
+                                break;
 
                             default:
-                            Console.WriteLine($"Wrong option!");
-                            break;
+                                Console.WriteLine($"Wrong option!");
+                                break;
                         }
 
 
                         lines[i] = string.Join('|', chunks);
                         found = true;
                     }
-                    
+
 
                 }
 
@@ -142,25 +135,27 @@ namespace FileManager.Controller
             }
             catch (System.Exception ex)
             {
-                throw new IOException("An error occurred while editing the file: " + ex.Message);  
+                throw new IOException("An error occurred while editing the file: " + ex.Message);
             }
-        }  
-        // CHECK IF FILE LIST CONTAIN NAME
-        public bool DishFound(string name){
+        }
+
+        //? CHECK IF FILE LIST CONTAIN NAME
+        public bool DishFound(string name)
+        {
             var lines = File.ReadAllLines(dishDbPath);
-                bool found = false;
+            bool found = false;
 
-                for (int i = 1; i < lines.Length; i++)
+            for (int i = 1; i < lines.Length; i++)
+            {
+                var chunks = lines[i].Split('|');
+
+                if (chunks.Length >= 0 && chunks[0].Trim().ToLower() == name.Trim().ToLower())
                 {
-                    var chunks = lines[i].Split('|');
-
-                    if (chunks.Length >= 0 && chunks[0].Trim().ToLower() == name.Trim().ToLower())
-                    {
-                        found = true;
-                        break;
-                    }
+                    found = true;
+                    break;
                 }
-                return found;
+            }
+            return found;
         }
     }
 
