@@ -221,10 +221,10 @@ namespace ResturantManagementLibrary
             string newValue;
             
             int selectOption;
-            Console.WriteLine($"Insert new data for the dish: {name}");
 
             do
             {
+                Console.WriteLine($"Insert new data for the dish: {name}");
                 MenuUtils.ShowMenuOption(options);
                 selectOption = MenuUtils.ReadChoise();
                 switch (selectOption)
