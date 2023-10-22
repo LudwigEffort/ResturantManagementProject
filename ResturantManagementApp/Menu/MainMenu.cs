@@ -10,10 +10,10 @@ namespace ResturantManagementLibrary
             {
                 "1. Dish Manager",
                 "2. Orders Manager",
-                "3. Tables Manager",
+                "3. Tables Manager (not implemeted)",
                 "4. Employees Manager",
-                "5. Warhouse Manager",
-                "6. Tax Manager",
+                "5. Warhouse Manage (not implemeted)",
+                "6. Tax Manager (not implemeted)",
                 "0. Exit"
             };
             int selectOption;
@@ -31,7 +31,9 @@ namespace ResturantManagementLibrary
                         dishMenu.StartDishMenu();
                         break;
                     case 2: //? Orders Manager
-                        Console.WriteLine($"Not implement");
+                        Console.Clear();
+                        OrderMenu orderMenu = new();
+                        orderMenu.StartOrderMenu();
                         StartMainMenu();
                         break;
                     case 3: //? Tables Manager

@@ -134,7 +134,7 @@ namespace FileManager.Controller
 
                 File.WriteAllLines(dishDbPath, lines);
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
                 throw new IOException("An error occurred while editing the file: " + ex.Message);
             }

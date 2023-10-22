@@ -41,6 +41,20 @@ namespace ResturantManagementLibrary
             }
         }
 
+        //* Print reservations
+        public static void PrintAllReservation(List<Reservation> reservations)
+        {
+            Console.WriteLine($"List of Reservations: ");
+            Console.WriteLine($"---------------------");
+            foreach (var reservation in reservations)
+            {
+                Console.WriteLine($"CustomerId: {reservation.CustomerId}");
+                Console.WriteLine($"TableId: {reservation.TableId}");
+                Console.WriteLine($"StartTime: {reservation.StartDate}");
+                Console.WriteLine($"EndTime: {reservation.EndDate}");
+                Console.WriteLine($"---------------------");
+            }
+        }
 
         //* Dish utils
 
