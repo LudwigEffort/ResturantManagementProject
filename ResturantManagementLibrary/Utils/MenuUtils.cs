@@ -34,7 +34,6 @@ namespace ResturantManagementLibrary
             {
                 Console.WriteLine($"Table Id: {table.TableId}");
                 Console.WriteLine($"Table Capacity: {table.Capacity}");
-                Console.WriteLine($"Available table num: {table.AvailableCount}");
                 Console.WriteLine($"---------------------");
             }
         }

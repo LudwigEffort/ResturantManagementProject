@@ -4,13 +4,11 @@ namespace ResturantManagementLibrary
     {
         public string TableId { get; }
         public int Capacity { get; }
-        public int AvailableCount { get; private set; }
 
-        public Table(string tableId, int capacity, int availableCount)
+        public Table(string tableId, int capacity)
         {
             TableId = tableId;
             Capacity = capacity;
-            AvailableCount = availableCount;
         }
 
     }

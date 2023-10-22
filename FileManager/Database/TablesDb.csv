@@ -1,6 +1,10 @@
 - Tables Database
-TableId | Capacity | AvailableCount 
-TableTwoSeats | 2 | 5 
-TableFourSeats | 4 | 8 
-TableEightSeats | 8 | 4 
-TableTenSeats | 10 | 2 
+TableId | Capacity
+TableA1 | 2
+TableA2 | 2
+TableB1 | 4
+TableB2 | 4
+TableC1 | 8
+TableC2 | 8
+TableD1 | 10
+TableD2 | 10
