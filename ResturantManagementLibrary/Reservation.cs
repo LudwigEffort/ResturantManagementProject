@@ -2,10 +2,18 @@ namespace ResturantManagementLibrary
 {
     public class Reservation
     {
-        private Customer _customerId;
+        private string _customerId;
         private string _tableId;
         private DateTime _startDate;
         private DateTime _endDate;
+
+        public Reservation(string customerId, string tableId, DateTime startDate, DateTime endDate)
+        {
+            _customerId = customerId;
+            _tableId = tableId;
+            _startDate = startDate;
+            _endDate = endDate;
+        }
 
         public DateTime StartDate
         {
@@ -44,7 +52,7 @@ namespace ResturantManagementLibrary
             }
         }
 
-        public Customer CustomerId { get => _customerId; set => _customerId = value; }
+        public string CustomerId { get => _customerId; set => _customerId = value; }
         public string TableId { get => _tableId; set => _tableId = value; }
     }
 }
