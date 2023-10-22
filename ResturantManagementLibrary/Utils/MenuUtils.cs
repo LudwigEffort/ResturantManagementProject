@@ -32,9 +32,12 @@ namespace ResturantManagementLibrary
             Console.WriteLine($"---------------------");
             foreach (var table in tables)
             {
-                Console.WriteLine($"Table Id: {table.TableId}");
-                Console.WriteLine($"Table Capacity: {table.Capacity}");
-                Console.WriteLine($"---------------------");
+                if (table.IsAvailable == true)
+                {
+                    Console.WriteLine($"Table Id: {table.TableId}");
+                    Console.WriteLine($"Table Capacity: {table.Capacity}");
+                    Console.WriteLine($"---------------------");
+                }
             }
         }
 
