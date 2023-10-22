@@ -23,6 +23,15 @@ namespace ResturantManagementLibrary
             return selectOption;
         }
 
+        //* Table utils
+
+        //? Print available tables
+        public static void ShowAvailableTables(List<Table> tables)
+        {
+
+        }
+
+
         //* Dish utils
 
         //? Pritn all dishes (READ)
@@ -91,6 +100,7 @@ namespace ResturantManagementLibrary
             return categoryChoised;
         }
 
+        //? Form client for make order or reservation 
         public static string CustomerForm()
         {
             Console.WriteLine($"Employee Sign up");

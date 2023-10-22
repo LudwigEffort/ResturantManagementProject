@@ -21,10 +21,9 @@ namespace ResturantClientApp
                 "1. Make a order",
                 "0. Back to main menu"
             };
-            int selectOption;
 
             MenuUtils.ShowMenuOption(options);
-            selectOption = MenuUtils.ReadChoise();
+            int selectOption = MenuUtils.ReadChoise();
 
             do
             {
