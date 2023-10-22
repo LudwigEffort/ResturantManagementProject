@@ -2,7 +2,7 @@ namespace ResturantManagementLibrary
 {
     public class MainMenu
     {
-        LoginMenu loginMenu = new();
+        LoginMenu loginMenu = LoginMenu.GetInstance();
 
         public void StartMainMenu()
         {

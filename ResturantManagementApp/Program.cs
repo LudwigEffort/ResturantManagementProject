@@ -1,12 +1,11 @@
-﻿
-namespace ResturantManagementLibrary
+﻿namespace ResturantManagementLibrary
 {
     class Program
     {
         public static void Main()
         {
-            LoginMenu menu = new();
-            menu.StartLoginMenu();
+            LoginMenu loginMenu = LoginMenu.GetInstance();
+            loginMenu.StartLoginMenu();
         }
     }
 }
