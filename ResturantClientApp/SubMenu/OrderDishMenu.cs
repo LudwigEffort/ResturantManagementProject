@@ -8,15 +8,16 @@ namespace ResturantClientApp
     {
         MainMenu mainMenuClient = MainMenu.GetInstance();
         DishFileManager dishFileManager = new();
-        CheckFileManager checkFileManager = new();
+        //CheckFileManager checkFileManager = new();
 
         public void StartDishMenu()
         {
+            Console.Clear();
+
             string[] options =
             {
-                "1. Print all dishes",
-                "2. Print dishes by category",
-                "0. Back"
+                "1. Make a order",
+                "0. Back to main menu"
             };
             int selectOption;
 
@@ -27,14 +28,12 @@ namespace ResturantClientApp
             {
                 switch (selectOption)
                 {
-                    case 1: //? print all
+                    case 1: //? start menu
                         CreateDishOrderForm();
-                        break;
-                    case 2: //? print by category
                         break;
                     case 0:
                         Console.Clear();
-                        Console.WriteLine($"Back...");
+                        Console.WriteLine($"Backing to main menu...");
                         mainMenuClient.StartMainMenu();
                         break;
                     default:
@@ -47,12 +46,39 @@ namespace ResturantClientApp
 
         public void CreateDishOrderForm()
         {
-            //TODO: move here switch to print all or by type
+            Console.Clear();
+
             CheckFileManager checkFileManager = new();
             List<Dish> dishes = dishFileManager.ReadDish();
-            MenuUtils.ShowDishes(dishes);
 
             Dictionary<Dish, int> selectedMenu = new Dictionary<Dish, int>();
+
+            string[] options = { "1. Print all dish", "2. Print by category", "0. Back." };
+            MenuUtils.ShowMenuOption(options);
+            int selectOption = MenuUtils.ReadChoise();
+
+            do
+            {
+                switch (selectOption)
+                {
+                    case 1:
+                        Console.WriteLine($"Printing all dishes: ");
+                        MenuUtils.ShowDishes(dishes);
+                        break;
+                    case 2:
+                        Console.WriteLine($"Printing by category: ");
+                        //TODO: insert method in utils
+                        break;
+                    case 0:
+                        Console.WriteLine($"Exit from order dish...");
+                        StartDishMenu();
+                        break;
+                    default:
+                        Console.WriteLine($"Wrong option!");
+                        break;
+                }
+
+            } while (selectOption != 1 && selectOption != 2 && selectOption != 0);
 
             while (true)
             {
@@ -77,12 +103,12 @@ namespace ResturantClientApp
                     Console.WriteLine($"Dish not found. Try again.");
                 }
 
-                Console.WriteLine($"Enter your Name and Last name: ");
-                string customerId = Console.ReadLine();
 
-                checkFileManager.CreateDishOrder(selectedMenu, customerId);
             }
-
+            Console.WriteLine($"Enter your Name and Last name: ");
+            string customerId = Console.ReadLine();
+            checkFileManager.CreateDishOrder(selectedMenu, customerId);
+            mainMenuClient.StartMainMenu();
         }
     }
 }
