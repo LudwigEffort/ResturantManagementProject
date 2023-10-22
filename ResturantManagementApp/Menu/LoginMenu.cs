@@ -4,13 +4,25 @@ using static ResturantManagementLibrary.Employee;
 
 namespace ResturantManagementLibrary
 {
-    public class LoginMenu
+    class LoginMenu
     {
-        string[] options = { "1. Login", "2. Sign Up", "0. Exit" };
-        int selectOption;
+        private static LoginMenu instance;
+        private LoginMenu() { }
+
+        public static LoginMenu GetInstance()
+        {
+            if (instance == null)
+            {
+                instance = new();
+            }
+            return instance;
+        }
 
         public void StartLoginMenu()
         {
+            string[] options = { "1. Login", "2. Sign Up", "0. Exit" };
+            int selectOption;
+
             EmployeeController employeeController = new(); //? from file manager
             employeeController.CreateEmployeeDb();
 

@@ -4,8 +4,8 @@ namespace ResturantManagementLibrary
     {
         public static void Main()
         {
-            LoginMenu menu = new();
-            menu.StartLoginMenu();
+            LoginMenu loginMenu = LoginMenu.GetInstance();
+            loginMenu.StartLoginMenu();
         }
     }
 }
