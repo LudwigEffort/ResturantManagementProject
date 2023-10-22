@@ -26,6 +26,7 @@ namespace ResturantManagementLibrary
                 switch (selectOption)
                 {
                     case 1: //? Dish Manager
+                        Console.Clear();
                         DishMenu dishMenu = new();
                         dishMenu.StartDishMenu();
                         break;

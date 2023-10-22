@@ -15,7 +15,7 @@ namespace ResturantManagementLibrary
         public static int ReadChoise()
         {
             int selectOption;
-            Console.WriteLine($"Select a option with 1-2:");
+            Console.WriteLine($"Select a option with (number):");
             while (!int.TryParse(Console.ReadLine(), out selectOption))
             {
                 Console.WriteLine($"Wrong Option!");
@@ -25,10 +25,9 @@ namespace ResturantManagementLibrary
 
         //* Dish utils
 
-        //? Pritn all dishes
+        //? Pritn all dishes (READ)
         public static void ShowDishes(List<Dish> dishes)
         {
-            Console.Clear();
             Console.WriteLine($"List of Dishes:");
             Console.WriteLine($"---------------------");
             foreach (var dish in dishes)
@@ -46,6 +45,8 @@ namespace ResturantManagementLibrary
                 Console.WriteLine($"---------------------");
             }
         }
+
+        //* Dish category
 
         //? Print dishes by category
         public static List<Dish> ShowDishesByCategory(List<Dish> dishes)
