@@ -91,6 +91,8 @@ namespace ResturantManagementLibrary
                 Console.WriteLine("Table not found. Try again.");
             }
 
+            MenuUtils.ShowDishes(dishes);
+
             while (true)
             {
                 Console.WriteLine($"Select a dish (with name) and enter 'end' to complete the order:");
