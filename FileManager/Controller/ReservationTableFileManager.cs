@@ -15,41 +15,51 @@ namespace FileManager.Controller
                     using (StreamWriter file = File.CreateText(reservationDbPath))
                     {
                         file.WriteLine("- Reservation Database");
-                        file.WriteLine("Customer | Tables | StartTime | EndTIme");
+                        file.WriteLine("CustomerId | TableId | StartTime | EndTIme");
                     }
                 }
             }
-            catch (System.Exception ex)
-            {   
+            catch (Exception ex)
+            {
                 throw new IOException($"An error occurred while creating file: {ex.Message}");
             }
         }
 
-        public List<Reservation> ReadReservation()
+        // public List<Reservation> ReadReservation()
+        // {
+        //     List<Reservation> reservations = new();
+        //     using var input = File.OpenText(reservationDbPath);
+        //     input.ReadLine();
+        //     input.ReadLine();
+
+        //     while (true)
+        //     {
+        //         string? line = input.ReadLine();
+
+        //         if (line is null)
+        //         {
+        //             break;
+        //         }
+
+        //         var chunks = line.Split('|');
+
+        //     }
+        // }
+
+        public void AddReservation(string customerId, string tableId, DateTime startDate, DateTime endDate)
         {
-            List<Reservation> reservations = new();
-            using var input = File.OpenText(reservationDbPath);
-            input.ReadLine();
-            input.ReadLine();
-
-            while (true)
+            try
             {
-                string? line = input.ReadLine();
-
-                if (line is null)
+                using (StreamWriter file = File.AppendText(reservationDbPath))
                 {
-                    break;
+                    file.WriteLine($"{customerId} | {tableId} | {startDate} | {endDate}");
                 }
-
-                var chunks = line.Split('|');
-
+            }
+            catch (Exception ex)
+            {
+                throw new IOException($"An error occurred while adding a reservation: {ex.Message}");
             }
         }
-        public void AddReservation(Customer customer, List<Table> tables, DateTime startDate, DateTime endDate)
-        {
-            using var output = File.AppendText(reservationDbPath);
-            string tablelist = string.Join(", ", tables.Select(table => table.ToString()));
-            output.WriteLine($"{customer.CustomerId} | {tables} | {startDate} | {endDate}");
-        }
+
     }
 }
