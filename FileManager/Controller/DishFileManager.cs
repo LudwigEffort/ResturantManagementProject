@@ -84,7 +84,8 @@ namespace FileManager.Controller
             output.WriteLine($"{name} | {description} | {price} | {category} | {ingredientList}");
         }
 
-        public void EditDishForm(string name)
+        // EDIT DB
+        public void EditDishDB(string name, int selectOption, dynamic newValue)
         {
             try
             {
@@ -96,22 +97,53 @@ namespace FileManager.Controller
                     var chunks = lines[i].Split('|');
 
                     if (chunks.Length >= 0 && chunks[0].Trim().ToLower() == name.Trim().ToLower())
-                    {
-                        Console.WriteLine("Inserisci i nuovi dati per il piatto:");
-                        Console.Write("Nome: ");
-                        chunks[0] = Console.ReadLine();
-                        Console.Write("Descrizione: ");
-                        chunks[1] = Console.ReadLine();
-                        Console.Write("Prezzo: ");
-                        chunks[2] = Console.ReadLine();
-                        Console.Write("Lista delle categorie: ");
-                        chunks[3] = Console.ReadLine();
-                        Console.Write("Ingredienti: ");
-                        chunks[4] = Console.ReadLine();
+                    {    
+                        switch (selectOption)
+                        {
+                            case 1:
+                            chunks[0] = newValue;
+                            break;
+
+                            case 2:
+                            chunks[1] = newValue;
+                            break;
+
+                            case 3:
+                            chunks[2] = newValue;
+                            break;
+
+                            case 4:
+                            chunks[3] = newValue.ToString();
+                            break;
+                            
+                            case 5:
+                            chunks[4] = newValue.ToString();
+                            break;
+
+                            case 6:
+                                Console.Write("Name: ");
+                                chunks[0] = Console.ReadLine();
+                                Console.Write("Description: ");
+                                chunks[1] = Console.ReadLine();
+                                Console.Write("Price: ");
+                                chunks[2] = Console.ReadLine();
+                                Console.Write("Category List: ");
+                                int tempCategory =  Convert.ToInt32(Console.ReadLine());
+                                chunks[3] = tempCategory.ToString();
+                                Console.Write("Ingredients (divided by ';'): ");
+                                chunks[4] = Console.ReadLine();
+                            break;
+
+                            default:
+                            Console.WriteLine($"Wrong option!");
+                            break;
+                        }
+
 
                         lines[i] = string.Join('|', chunks);
                         found = true;
                     }
+                    
 
                 }
 
@@ -127,7 +159,25 @@ namespace FileManager.Controller
             {
                 throw new IOException("An error occurred while editing the file: " + ex.Message);  
             }
+        }  
+        // CHECK IF FILE LIST CONTAIN NAME
+        public bool DishFound(string name){
+            var lines = File.ReadAllLines(dishDbPath);
+                bool found = false;
+
+                for (int i = 1; i < lines.Length; i++)
+                {
+                    var chunks = lines[i].Split('|');
+
+                    if (chunks.Length >= 0 && chunks[0].Trim().ToLower() == name.Trim().ToLower())
+                    {
+                        found = true;
+                        break;
+                    }
+                }
+                return found;
         }
-        
     }
+
+
 }

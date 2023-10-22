@@ -38,10 +38,19 @@ namespace ResturantManagementLibrary
                         ShowDishes(dishes);
                         break;
                     case 3: //? edit a dish
-                        Console.WriteLine($"Not implement...");
                         ShowDishes(dishes);
+                        Console.WriteLine("Insert the name of the dish you wish to edit");
                         string tempName = Console.ReadLine();
-                        dishFileManager.EditDishForm(tempName);
+                        if (dishFileManager.DishFound(tempName))
+                        {
+                            EditDishForm(tempName);                           
+                        }
+                        else
+                        {
+                            Console.WriteLine("ERROR: Name not contained \n");
+                            mainMenu.StartMainMenu();
+                        }
+                        // dishFileManager.EditDishForm(tempName);
                         break;
                     case 4: //? delite a dish
                         Console.WriteLine($"Not implement...");
@@ -198,6 +207,85 @@ namespace ResturantManagementLibrary
         }
 
         //? EDIT
+        public void EditDishForm(string name)
+        {
+            string[] options = 
+            {
+                "1 - Chage name",
+                "2 - Change description",
+                "3 - Change Price",
+                "4 - Change type of category",
+                "5 - Change ingredients (separated by comma)",
+                "6 - Change all data",
+                "0 - Exit"
+            };
+            string newValue;
+            
+            int selectOption;
+            MenuUtils.ShowMenuOption(options);
+            selectOption = MenuUtils.ReadChoise();
+            Console.WriteLine("Insert new data for the dish: ");
+
+            do
+            {
+                switch (selectOption)
+                {
+                    case 1:
+                    Console.WriteLine("Insert the new name: ");
+                    newValue = Console.ReadLine();
+                    dishFileManager.EditDishDB(name, selectOption, newValue);
+                    break;
+
+                    case 2:
+                    Console.WriteLine("Insert a new description");
+                    newValue = Console.ReadLine();
+                    dishFileManager.EditDishDB(name, selectOption, newValue);
+                    break;
+
+                    case 3:
+                    Console.WriteLine("Insert the new price");
+                    newValue = Console.ReadLine();
+                    double price = DoubleControl(newValue);
+                    dishFileManager.EditDishDB(name, selectOption, price);
+                    break;
+                    
+                    case 4:
+                    Console.WriteLine("Insert a new category");
+                    CategoryList categoryList = ChoiseCategory();
+                    dishFileManager.EditDishDB(name, selectOption, categoryList);
+                    break;
+                    
+                    case 5:
+                    Console.WriteLine("Insert new ingredients (separated by ';')");
+                    PrintIngredient();
+                    newValue = Console.ReadLine();
+                    dishFileManager.EditDishDB(name, selectOption, newValue);
+                    break;
+                    
+                    case 6:
+                    Console.WriteLine("Edit the new dish");
+                    dishFileManager.EditDishDB(name, selectOption, null);
+                    break;
+                    
+                    case 0: //? back to main menu
+                    mainMenu.StartMainMenu();
+                    break;
+
+                    default:
+                    Console.WriteLine($"Wrong option!");
+                    break;
+                }
+            } while (
+                    selectOption != 1 &&
+                    selectOption != 2 &&
+                    selectOption != 3 &&
+                    selectOption != 4 &&
+                    selectOption != 5 &&
+                    selectOption != 6 &&
+                    selectOption != 0
+                    );
+
+        }
 
         //? DELITE
 
