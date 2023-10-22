@@ -17,11 +17,11 @@ namespace ResturantManagementLibrary
                 "1. Create a dish",
                 "2. Shows all dishes",
                 "3. Edit a dish",
-                "4. Remove dish"
+                "4. Remove dish",
+                "0. Back..."
             };
             int selectOption;
 
-            Console.Clear();
             Console.WriteLine($"Dish Menu:");
 
             MenuUtils.ShowMenuOption(options);
@@ -32,20 +32,26 @@ namespace ResturantManagementLibrary
                 switch (selectOption)
                 {
                     case 1: //? create a dish
+                        Console.Clear();
                         CreateDishForm();
                         break;
                     case 2: //? print all dish
-                        ShowDishes(dishes);
+                        Console.Clear();
+                        MenuUtils.ShowDishes(dishes);
+                        StartDishMenu();
                         break;
                     case 3: //? edit a dish
+                        Console.Clear();
                         Console.WriteLine($"Not implement...");
                         mainMenu.StartMainMenu();
                         break;
                     case 4: //? delite a dish
+                        Console.Clear();
                         Console.WriteLine($"Not implement...");
                         mainMenu.StartMainMenu();
                         break;
                     case 0: //? back to main menu
+                        Console.Clear();
                         mainMenu.StartMainMenu();
                         break;
                     default:
@@ -64,7 +70,6 @@ namespace ResturantManagementLibrary
         //? CREATE
         public void CreateDishForm()
         {
-            Console.Clear();
             Console.WriteLine($"Add a new dish:");
 
             Console.WriteLine($"Enter a name of dish");
@@ -76,7 +81,7 @@ namespace ResturantManagementLibrary
             Console.WriteLine($"Enter a price of dish");
             double price = Convert.ToDouble(Console.ReadLine()); //TODO: manage exception
 
-            CategoryList category = ChoiseCategory();
+            CategoryList category = MenuUtils.ChoiseCategory();
 
             List<IngredientManager.Ingredient> selectedIngredients = ChoiseIngredients();
 
@@ -87,36 +92,7 @@ namespace ResturantManagementLibrary
             StartDishMenu();
         }
 
-        public void PrintCategory()
-        {
-            Console.WriteLine($"Category list:");
-            foreach (var category in Enum.GetValues(typeof(CategoryList)))
-            {
-                Console.WriteLine($"- {(int)category}. {category}");
-            }
-        }
 
-        public CategoryList ChoiseCategory()
-        {
-            CategoryList categoryChoised = CategoryList.NotCategory;
-
-            do
-            {
-                PrintCategory();
-                Console.WriteLine($"Choise a category for dish (with nume):");
-                if (int.TryParse(Console.ReadLine(), out int choise) && Enum.IsDefined(typeof(CategoryList), choise))
-                {
-                    categoryChoised = (CategoryList)choise;
-                    Console.WriteLine($"You are choise: {categoryChoised}");
-                }
-                else
-                {
-                    Console.WriteLine($"Choise not valid!");
-                }
-            } while (!Enum.IsDefined(typeof(CategoryList), categoryChoised));
-
-            return categoryChoised;
-        }
 
         public void PrintIngredient()
         {
@@ -153,28 +129,6 @@ namespace ResturantManagementLibrary
             } while (selectedIngredients.Count == 0);
 
             return selectedIngredients;
-        }
-
-        //? READ
-        public void ShowDishes(List<Dish> dishes)
-        {
-            Console.Clear();
-            Console.WriteLine($"List of Dishes:");
-            Console.WriteLine($"---------------------");
-            foreach (var dish in dishes)
-            {
-                Console.WriteLine($"Name: {dish.Name}");
-                Console.WriteLine($"Description: {dish.Description}");
-                Console.WriteLine($"Price: {dish.Price}");
-                Console.WriteLine($"Category: {dish.Category}");
-                Console.Write($"Ingredientes: ");
-                foreach (var ingredient in dish.Ingredients)
-                {
-                    Console.WriteLine(ingredient + ", ");
-
-                }
-                Console.WriteLine($"---------------------");
-            }
         }
 
         //? EDIT

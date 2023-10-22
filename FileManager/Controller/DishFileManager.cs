@@ -16,7 +16,7 @@ namespace FileManager.Controller
                     using (StreamWriter file = File.CreateText(dishDbPath))
                     {
                         file.WriteLine($"- Dish Database");
-                        file.WriteLine($"Name, Description, Price, Category, Ingredients");
+                        file.WriteLine($"Name | Description | Price | Category | Ingredients");
                     }
 
                 }
@@ -77,7 +77,7 @@ namespace FileManager.Controller
         // }
 
         //? CREATE
-        public void AddDish(string name, string description, double price, Dish.CategoryList category, List<IngredientManager.Ingredient> ingredients)
+        public void AddDish(string name, string description, double price, Dish.CategoryList category, List<Ingredient> ingredients)
         {
             using var output = File.AppendText(dishDbPath);
             string ingredientList = string.Join("; ", ingredients.Select(ingredient => ((int)ingredient).ToString()));

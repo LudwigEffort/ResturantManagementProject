@@ -2,7 +2,7 @@ namespace ResturantManagementLibrary
 {
     public class Dish
     {
-        public enum CategoryList //TODO: move 
+        public enum CategoryList
         {
             NotCategory,
             Appetizer,
@@ -12,10 +12,10 @@ namespace ResturantManagementLibrary
             Dessert
         }
 
-        public string Name { get; set; } = string.Empty;
-        public string Description = String.Empty;
+        public string Name { get; set; }
+        public string Description { get; set; }
         public double Price; //TODO: to private
-        //public bool Avaiable; //TODO: for soft delite
+
         public CategoryList Category;
         public List<IngredientManager.Ingredient> Ingredients;
 
