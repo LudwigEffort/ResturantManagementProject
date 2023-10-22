@@ -18,11 +18,11 @@ namespace ResturantManagementLibrary
             };
             int selectOption;
 
-            MenuUtils.ShowMenuOption(options);
-            selectOption = MenuUtils.ReadChoise();
 
             do
             {
+                MenuUtils.ShowMenuOption(options);
+                selectOption = MenuUtils.ReadChoise();
                 switch (selectOption)
                 {
                     case 1: //? Dish Manager
@@ -39,8 +39,9 @@ namespace ResturantManagementLibrary
                         StartMainMenu();
                         break;
                     case 4: //? Employees Manager
-                        Console.WriteLine($"Not implement");
-                        StartMainMenu();
+                        Console.Clear();
+                        EmployeeMenu employeeMenu = new();
+                        employeeMenu.StartEmployeeMenu();
                         break;
                     case 5: //? Warhouse Manager
                         Console.WriteLine($"Not implement");

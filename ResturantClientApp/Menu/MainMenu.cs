@@ -24,11 +24,10 @@ namespace ResturantClientApp
             };
             int selectOption;
 
-            ResturantManagementLibrary.MenuUtils.ShowMenuOption(options);
-            selectOption = ResturantManagementLibrary.MenuUtils.ReadChoise();
-
             do
             {
+                ResturantManagementLibrary.MenuUtils.ShowMenuOption(options);
+                selectOption = ResturantManagementLibrary.MenuUtils.ReadChoise();
                 switch (selectOption)
                 {
                     case 1:

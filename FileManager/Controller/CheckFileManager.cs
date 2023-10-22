@@ -104,7 +104,7 @@ namespace FileManager.Controller
         public void AddCheck(Dictionary<Dish, int> orderedDishes, string customerId, double amount, double tip, double tax, bool isPaid)
         {
             using var output = File.AppendText(CheckDbPath);
-            string dishlist = string.Join(", ", orderedDishes.Select(kv => $"{kv.Key} x{kv.Value}"));
+            string dishlist = string.Join(", ", orderedDishes.Select(kv => $"{kv.Key.Name} x{kv.Value}"));
             output.WriteLine($"{dishlist} | {customerId} | {amount} | {tip} | {tax} | {isPaid}");
         }
     }

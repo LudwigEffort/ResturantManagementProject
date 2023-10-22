@@ -26,11 +26,11 @@ namespace ResturantManagementLibrary
             EmployeeController employeeController = new(); //? from file manager
             employeeController.CreateEmployeeDb();
 
-            MenuUtils.ShowMenuOption(options);
-            selectOption = MenuUtils.ReadChoise();
 
             do
             {
+                MenuUtils.ShowMenuOption(options);
+                selectOption = MenuUtils.ReadChoise();
                 switch (selectOption)
                 {
                     case 1: //? Login
@@ -101,20 +101,38 @@ namespace ResturantManagementLibrary
 
             Console.WriteLine($"Enter your password: ");
             string password = Console.ReadLine();
-
             RoleList role = ChoiseRole();
-
-            DateTime currentDate = DateTime.Now;
-            string formatDate = currentDate.ToString("yyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
-            DateTime date = Convert.ToDateTime(formatDate);
-
-            //TODO: manage date time for employee
-
+            TimeSpan date = CalculateWorkHours();
             EmployeeController.NewEmployee(name, lastName, email, phone, password, role, date);
-
             Console.Clear();
             Console.WriteLine($"The {name} employee was created");
             StartLoginMenu();
+        }
+
+        public TimeSpan CalculateWorkHours(){
+            TimeSpan duration = TimeSpan.Zero;
+            Console.WriteLine("Enter the starting hours of your shift (HH:mm:ss): ");
+            string inputStart = Console.ReadLine();
+            TimeSpan timeSpanStart;
+            if (TimeSpan.TryParse(inputStart, out timeSpanStart))
+            {
+                Console.WriteLine("Enter the starting hours of your shift (HH:mm:ss): ");
+                string inputEnd = Console.ReadLine();
+                TimeSpan timeSpanEnd;
+                if (TimeSpan.TryParse(inputEnd, out timeSpanEnd))
+                {
+                    duration = timeSpanEnd - timeSpanStart;
+                }
+                else
+                {
+                    Console.WriteLine("Formato orario non valido. Riprova.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Formato orario non valido. Riprova.");
+            }
+            return duration;
         }
 
         public static void PrintRole()

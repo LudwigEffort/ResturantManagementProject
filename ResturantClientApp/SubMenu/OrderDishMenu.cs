@@ -8,10 +8,11 @@ namespace ResturantClientApp
     {
         MainMenu mainMenuClient = MainMenu.GetInstance();
         DishFileManager dishFileManager = new();
-        //CheckFileManager checkFileManager = new();
+        CheckFileManager checkFileManager = new();
 
         public void StartDishMenu()
         {
+            checkFileManager.CreateCheckDb();
             Console.Clear();
 
             string[] options =
@@ -21,11 +22,11 @@ namespace ResturantClientApp
             };
             int selectOption;
 
-            MenuUtils.ShowMenuOption(options);
-            selectOption = MenuUtils.ReadChoise();
 
             do
             {
+                MenuUtils.ShowMenuOption(options);
+                selectOption = MenuUtils.ReadChoise();
                 switch (selectOption)
                 {
                     case 1: //? start menu
@@ -54,11 +55,12 @@ namespace ResturantClientApp
             Dictionary<Dish, int> selectedMenu = new Dictionary<Dish, int>();
 
             string[] options = { "1. Print all dish", "2. Print by category", "0. Back." };
-            MenuUtils.ShowMenuOption(options);
-            int selectOption = MenuUtils.ReadChoise();
+            int selectOption;
 
             do
             {
+                MenuUtils.ShowMenuOption(options);
+                selectOption = MenuUtils.ReadChoise();
                 switch (selectOption)
                 {
                     case 1:

@@ -50,7 +50,7 @@ namespace FileManager.Controller
                 string phone = chunks[3].Trim();
                 string password = chunks[4].Trim();
                 RoleList role = Enum.TryParse(chunks[5].Trim(), out RoleList parsedRole) ? parsedRole : RoleList.WithoutRole;
-                DateTime workingHours = Convert.ToDateTime(chunks[6].Trim());
+                TimeSpan workingHours = Convert.ToDateTime(chunks[6].Trim()).TimeOfDay;
 
                 Employee employee = new(name, lastName, email, phone, password, role, workingHours);
                 employees.Add(employee);
@@ -59,7 +59,7 @@ namespace FileManager.Controller
         }
 
         //? Sign up
-        public static void NewEmployee(string name, string lastName, string email, string phone, string password, Employee.RoleList role, DateTime workingHours)
+        public static void NewEmployee(string name, string lastName, string email, string phone, string password, Employee.RoleList role, TimeSpan workingHours)
         {
             using var output = File.AppendText(employeeDbPath);
             output.WriteLine($"{name}, {lastName}, {email}, {phone}, {password}, {role}, {workingHours}");
@@ -72,6 +72,11 @@ namespace FileManager.Controller
             Employee employeeLogged = employees.Find(e => e.Email == email && e.Password == password);
 
             return employeeLogged != null ? true : false;
+        }
+
+        public List<Employee> ReadPublicEmployee(){
+            List<Employee> employees = ReadEmployees();
+            return employees;
         }
     }
 }
