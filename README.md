@@ -16,18 +16,13 @@
 
 ### To do list (domenica)
 
-- Dopo merge branch palo e ludo:
-  - **DONE** singleton per admin app -> _Ludo_
-  - problema stampa dentro il csv check, viene stampato il tipo del dictonary -> _Paolo_
-
-### To do list (domenica)
-
-#### RECAP LAVORO
-
-- iniziare gestine tavoli, ordini dai tavoli e metodo pagamento (quindi stampare check per nome o codice tavolo)
+- **DONE** singleton per admin app -> _Ludo_
+- problema stampa dentro il csv check, viene stampato il tipo del dictonary -> _Paolo_
+- iniziare gestine tavoli, ordini dai tavoli e metodo pagamento (quindi stampare check per nome o codice tavolo) -> _Ludo_
 - capire quali test effetuare per lunedi
 - fix bug con gli switch case dei menu, quando sbaglio numero delle opzioni, esplode tutto -> _Polo_
 - **TODO** fare frontend ristorante per gestione ordini, quindi crare gli ordini (gestione ordine dal tavolo, ti spiego come fare), stampare gli ordini dal database (gestire problema dei tipo generics dentro il file csv) -> _Paolo_
+- creare menu employee e stampare lista employees (se c'è tempo gestire il date time dei lavoratori) -> _Paolo_
 
 ### Dopo la consegna
 
