@@ -1,3 +1,5 @@
+using static ResturantManagementLibrary.Dish;
+
 namespace ResturantManagementLibrary
 {
     public class MenuUtils
@@ -21,7 +23,9 @@ namespace ResturantManagementLibrary
             return selectOption;
         }
 
-        //? Dish utils
+        //* Dish utils
+
+        //? Pritn all dishes
         public static void ShowDishes(List<Dish> dishes)
         {
             Console.Clear();
@@ -41,6 +45,49 @@ namespace ResturantManagementLibrary
                 }
                 Console.WriteLine($"---------------------");
             }
+        }
+
+        //? Print dishes by category
+        public static List<Dish> ShowDishesByCategory(List<Dish> dishes)
+        {
+            Console.WriteLine($"Print dishes by categories");
+            CategoryList category = ChoiseCategory();
+
+            List<Dish> filteredDishes = dishes.Where(dish => dish.Category == category).ToList();
+            return filteredDishes;
+        }
+
+        //? Pirnt category (enum)
+        public static void PrintCategory()
+        {
+            Console.WriteLine($"Category list:");
+            foreach (var category in Enum.GetValues(typeof(CategoryList)))
+            {
+                Console.WriteLine($"- {(int)category}. {category}");
+            }
+        }
+
+        //? Choise category
+        public static CategoryList ChoiseCategory()
+        {
+            CategoryList categoryChoised = CategoryList.NotCategory;
+
+            do
+            {
+                PrintCategory();
+                Console.WriteLine($"Choise a category for dish (with nume):");
+                if (int.TryParse(Console.ReadLine(), out int choise) && Enum.IsDefined(typeof(CategoryList), choise))
+                {
+                    categoryChoised = (CategoryList)choise;
+                    Console.WriteLine($"You are choise: {categoryChoised}");
+                }
+                else
+                {
+                    Console.WriteLine($"Choise not valid!");
+                }
+            } while (!Enum.IsDefined(typeof(CategoryList), categoryChoised));
+
+            return categoryChoised;
         }
     }
 }

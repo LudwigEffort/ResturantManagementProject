@@ -68,6 +68,7 @@ namespace ResturantClientApp
                     case 2:
                         Console.WriteLine($"Printing by category: ");
                         //TODO: insert method in utils
+                        MenuUtils.ShowDishes(MenuUtils.ShowDishesByCategory(dishes));
                         break;
                     case 0:
                         Console.WriteLine($"Exit from order dish...");
