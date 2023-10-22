@@ -1,3 +1,5 @@
+using ResturantManagementLibrary;
+
 namespace FileManager.Controller
 {
     public class TableFileManager
@@ -23,10 +25,37 @@ namespace FileManager.Controller
             }
             catch (Exception ex)
             {
-
                 throw new IOException($"An error occurred while creating file: {ex.Message}");
             }
 
+        }
+
+        public List<Table> ReadTable()
+        {
+            List<Table> tables = new();
+            using var input = File.OpenText(tablesDbPath);
+            input.ReadLine();
+            input.ReadLine();
+
+            while (true)
+            {
+                string? line = input.ReadLine();
+
+                if (line is null)
+                {
+                    break;
+                }
+
+                var chunks = line.Split('|');
+
+                string tableId = chunks[0].Trim();
+                int capacity = Convert.ToInt32(chunks[1].Trim());
+                int availableCount = Convert.ToInt32(chunks[2].Trim());
+
+                Table table = new(tableId, capacity, availableCount);
+                tables.Add(table);
+            }
+            return tables;
         }
     }
 }
