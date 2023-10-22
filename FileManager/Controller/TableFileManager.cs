@@ -41,26 +41,24 @@ namespace FileManager.Controller
                 var lines = File.ReadAllLines(tablesDbPath);
                 bool found = false;
 
-                for (int i = 2; i < lines.Length; i++)
+                for (int i = 1; i < lines.Length; i++) // Start from 1 instead of 2
                 {
                     var chunks = lines[i].Split('|');
-                    if (chunks.Length >= 3 && chunks[2].Trim().ToLower() == tableId.Trim().ToLower())
+                    if (chunks.Length >= 3 && chunks[0].Trim().ToLower() == tableId.Trim().ToLower())
                     {
-                        chunks[2] = false.ToString().ToLower();
+                        bool currentStatus = bool.Parse(chunks[2].Trim());
+                        chunks[2] = (!currentStatus).ToString().ToLower();
+                        found = true;
                     }
-                    else
-                    {
-                        chunks[2] = true.ToString().ToLower();
-                    }
-                    lines[i] = string.Join('|', chunks);
-                    found = true;
-                    break;
+                    lines[i] = string.Join(" | ", chunks);
                 }
+
                 if (!found)
                 {
                     Console.WriteLine($"Table with id {tableId} was not found!");
                     return;
                 }
+
                 File.WriteAllLines(tablesDbPath, lines);
             }
             catch (Exception ex)
@@ -68,6 +66,7 @@ namespace FileManager.Controller
                 throw new IOException($"An error occurred while writing file: {ex.Message}");
             }
         }
+
 
         public List<Table> ReadTable()
         {
