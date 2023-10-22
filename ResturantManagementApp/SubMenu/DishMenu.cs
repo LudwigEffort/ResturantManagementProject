@@ -216,24 +216,24 @@ namespace ResturantManagementLibrary
                 "3 - Change Price",
                 "4 - Change type of category",
                 "5 - Change ingredients (separated by comma)",
-                "6 - Change all data",
                 "0 - Exit"
             };
             string newValue;
             
             int selectOption;
-            MenuUtils.ShowMenuOption(options);
-            selectOption = MenuUtils.ReadChoise();
-            Console.WriteLine("Insert new data for the dish: ");
+            Console.WriteLine($"Insert new data for the dish: {name}");
 
             do
             {
+                MenuUtils.ShowMenuOption(options);
+                selectOption = MenuUtils.ReadChoise();
                 switch (selectOption)
                 {
                     case 1:
                     Console.WriteLine("Insert the new name: ");
                     newValue = Console.ReadLine();
                     dishFileManager.EditDishDB(name, selectOption, newValue);
+                    EditDishForm(newValue);
                     break;
 
                     case 2:
@@ -243,8 +243,7 @@ namespace ResturantManagementLibrary
                     break;
 
                     case 3:
-                    Console.WriteLine("Insert the new price");
-                    newValue = Console.ReadLine();
+                    newValue = "Insert the new price";
                     double price = DoubleControl(newValue);
                     dishFileManager.EditDishDB(name, selectOption, price);
                     break;
@@ -262,11 +261,6 @@ namespace ResturantManagementLibrary
                     dishFileManager.EditDishDB(name, selectOption, newValue);
                     break;
                     
-                    case 6:
-                    Console.WriteLine("Edit the new dish");
-                    dishFileManager.EditDishDB(name, selectOption, null);
-                    break;
-                    
                     case 0: //? back to main menu
                     mainMenu.StartMainMenu();
                     break;
@@ -276,12 +270,6 @@ namespace ResturantManagementLibrary
                     break;
                 }
             } while (
-                    selectOption != 1 &&
-                    selectOption != 2 &&
-                    selectOption != 3 &&
-                    selectOption != 4 &&
-                    selectOption != 5 &&
-                    selectOption != 6 &&
                     selectOption != 0
                     );
 

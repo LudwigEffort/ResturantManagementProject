@@ -108,7 +108,7 @@ namespace FileManager.Controller
                             break;
 
                             case 3:
-                            chunks[2] = newValue;
+                            chunks[2] = newValue.ToString();
                             break;
 
                             case 4:
@@ -117,21 +117,6 @@ namespace FileManager.Controller
                             
                             case 5:
                             chunks[4] = newValue.ToString();
-                            break;
-
-                            case 6:
-                                Console.Write("Name: ");
-                                chunks[0] = Console.ReadLine();
-                                Console.Write("Description: ");
-                                chunks[1] = Console.ReadLine();
-                                Console.Write("Price: ");
-                                chunks[2] = Console.ReadLine();
-                                Console.Write("Category List: ");
-                                int categoryNumber = int.Parse(Console.ReadLine());
-                                Dish.CategoryList category = (Dish.CategoryList)categoryNumber;
-                                chunks[3] = category.ToString();
-                                Console.Write("Ingredients (divided by ';'): ");
-                                chunks[4] = Console.ReadLine();
                             break;
 
                             default:
