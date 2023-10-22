@@ -2,9 +2,10 @@ namespace ResturantManagementLibrary
 {
     public class Reservation
     {
+        private Customer _customerId;
+        public List<Table> Tables { get; set; }
         private DateTime _startDate;
         private DateTime _endDate;
-        public Customer customer;
 
         public DateTime StartDate
         {
@@ -42,5 +43,7 @@ namespace ResturantManagementLibrary
                 }
             }
         }
+
+        public Customer CustomerId { get => _customerId; set => _customerId = value; }
     }
 }

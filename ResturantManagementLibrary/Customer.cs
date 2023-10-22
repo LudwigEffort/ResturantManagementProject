@@ -3,10 +3,12 @@ namespace ResturantManagementLibrary
     public class Customer : Person
     {
         private string? _address;
+        private string _customerId;
 
         public Customer(string name, string lastName, string email, string phone, string address) : base(name, lastName, email, phone)
         {
             Address = address;
+            CustomerId = $"{name}.{lastName}.{address}";
         }
 
         public string? Address
@@ -28,5 +30,7 @@ namespace ResturantManagementLibrary
                 }
             }
         }
+
+        public string CustomerId { get => _customerId; set => _customerId = value; }
     }
 }
