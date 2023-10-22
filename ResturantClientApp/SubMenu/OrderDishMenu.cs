@@ -14,6 +14,8 @@ namespace ResturantClientApp
         {
             Console.Clear();
 
+            string customerId = MenuUtils.CustomerForm();
+
             string[] options =
             {
                 "1. Make a order",
@@ -29,7 +31,7 @@ namespace ResturantClientApp
                 switch (selectOption)
                 {
                     case 1: //? start menu
-                        CreateDishOrderForm();
+                        CreateDishOrderForm(customerId);
                         break;
                     case 0:
                         Console.Clear();
@@ -44,7 +46,7 @@ namespace ResturantClientApp
 
         }
 
-        public void CreateDishOrderForm()
+        public void CreateDishOrderForm(string customerId)
         {
             Console.Clear();
 
@@ -106,7 +108,6 @@ namespace ResturantClientApp
 
             }
             Console.WriteLine($"Enter your Name and Last name: ");
-            string customerId = Console.ReadLine();
             checkFileManager.CreateDishOrder(selectedMenu, customerId);
             mainMenuClient.StartMainMenu();
         }

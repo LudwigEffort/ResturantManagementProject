@@ -90,5 +90,30 @@ namespace ResturantManagementLibrary
 
             return categoryChoised;
         }
+
+        public static string CustomerForm()
+        {
+            Console.WriteLine($"Employee Sign up");
+
+            Console.WriteLine($"Enter your name: ");
+            string name = Console.ReadLine();
+
+            Console.WriteLine($"Enter your last name: ");
+            string lastName = Console.ReadLine();
+
+            Console.WriteLine($"Enter your email: ");
+            string email = Console.ReadLine();
+
+            Console.WriteLine($"Enter your phone: ");
+            string phone = Console.ReadLine();
+
+            Console.WriteLine($"Enter your address: ");
+            string address = Console.ReadLine();
+
+            Customer customer = new Customer(name, lastName, email, phone, address);
+
+            return customer.CustomerId;
+
+        }
     }
 }

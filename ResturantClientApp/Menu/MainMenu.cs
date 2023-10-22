@@ -1,3 +1,5 @@
+using ResturantManagementLibrary;
+
 namespace ResturantClientApp
 {
     class MainMenu
@@ -24,8 +26,8 @@ namespace ResturantClientApp
             };
             int selectOption;
 
-            ResturantManagementLibrary.MenuUtils.ShowMenuOption(options);
-            selectOption = ResturantManagementLibrary.MenuUtils.ReadChoise();
+            MenuUtils.ShowMenuOption(options);
+            selectOption = MenuUtils.ReadChoise();
 
             do
             {
