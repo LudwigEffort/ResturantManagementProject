@@ -1,14 +1,14 @@
 namespace ResturantManagementLibrary
 {
-    class Table
+    public class Table
     {
-        enum TableType
+        public string TableId { get; }
+        public int Capacity { get; }
+
+        public Table(string tableId, int capacity)
         {
-            TwoSeats = 2,
-            FourSeats = 4,
-            SixSeats = 6,
-            EightSeats = 8,
-            TenSeats = 10
+            TableId = tableId;
+            Capacity = capacity;
         }
 
     }

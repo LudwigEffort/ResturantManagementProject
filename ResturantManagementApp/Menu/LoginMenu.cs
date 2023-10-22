@@ -23,8 +23,12 @@ namespace ResturantManagementLibrary
             string[] options = { "1. Login", "2. Sign Up", "0. Exit" };
             int selectOption;
 
-            EmployeeController employeeController = new(); //? from file manager
+            //? Create and seed databases
+            EmployeeController employeeController = new();
             employeeController.CreateEmployeeDb();
+
+            TableFileManager tableFileManager = new();
+            tableFileManager.CreateTablesDb();
 
             MenuUtils.ShowMenuOption(options);
             selectOption = MenuUtils.ReadChoise();

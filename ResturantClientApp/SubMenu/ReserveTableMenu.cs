@@ -1,7 +1,0 @@
-namespace ResturantClientApp
-{
-    class ReserveTableMenu
-    {
-
-    }
-}

@@ -23,6 +23,22 @@ namespace ResturantManagementLibrary
             return selectOption;
         }
 
+        //* Table utils
+
+        //? Print available tables
+        public static void ShowAvailableTables(List<Table> tables)
+        {
+            Console.WriteLine($"List of available tables: ");
+            Console.WriteLine($"---------------------");
+            foreach (var table in tables)
+            {
+                Console.WriteLine($"Table Id: {table.TableId}");
+                Console.WriteLine($"Table Capacity: {table.Capacity}");
+                Console.WriteLine($"---------------------");
+            }
+        }
+
+
         //* Dish utils
 
         //? Pritn all dishes (READ)
@@ -89,6 +105,32 @@ namespace ResturantManagementLibrary
             } while (!Enum.IsDefined(typeof(CategoryList), categoryChoised));
 
             return categoryChoised;
+        }
+
+        //? Form client for make order or reservation 
+        public static string CustomerForm()
+        {
+            Console.WriteLine($"Employee Sign up");
+
+            Console.WriteLine($"Enter your name: ");
+            string name = Console.ReadLine();
+
+            Console.WriteLine($"Enter your last name: ");
+            string lastName = Console.ReadLine();
+
+            Console.WriteLine($"Enter your email: ");
+            string email = Console.ReadLine();
+
+            Console.WriteLine($"Enter your phone: ");
+            string phone = Console.ReadLine();
+
+            Console.WriteLine($"Enter your address: ");
+            string address = Console.ReadLine();
+
+            Customer customer = new Customer(name, lastName, email, phone, address);
+
+            return customer.CustomerId;
+
         }
     }
 }
