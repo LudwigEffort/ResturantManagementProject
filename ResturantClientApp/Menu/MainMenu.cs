@@ -34,6 +34,8 @@ namespace ResturantClientApp
                 switch (selectOption)
                 {
                     case 1:
+                        ReservationTableMenu reservationTableMenu = new();
+                        reservationTableMenu.StartReservationMenu();
                         break;
                     case 2:
                         OrderDishMenu orderDishMenu = new();

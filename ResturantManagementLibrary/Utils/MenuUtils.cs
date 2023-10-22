@@ -28,7 +28,15 @@ namespace ResturantManagementLibrary
         //? Print available tables
         public static void ShowAvailableTables(List<Table> tables)
         {
-
+            Console.WriteLine($"List of available tables: ");
+            Console.WriteLine($"---------------------");
+            foreach (var table in tables)
+            {
+                Console.WriteLine($"Table Id: {table.TableId}");
+                Console.WriteLine($"Table Capacity: {table.Capacity}");
+                Console.WriteLine($"Available table num: {table.AvailableCount}");
+                Console.WriteLine($"---------------------");
+            }
         }
 
 

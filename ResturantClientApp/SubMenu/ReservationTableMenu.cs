@@ -1,4 +1,5 @@
 using System.Security.Cryptography.X509Certificates;
+using FileManager.Controller;
 using ResturantManagementLibrary;
 
 namespace ResturantClientApp
@@ -45,7 +46,9 @@ namespace ResturantClientApp
 
         public void CreateReservationTableForm(string customerId)
         {
-            //? print availabre tables
+            TableFileManager tableFileManager = new();
+            List<Table> tables = tableFileManager.ReadTable();
+            MenuUtils.ShowAvailableTables(tables);
             //? make a reservation with method in reservation file manager
         }
     }
