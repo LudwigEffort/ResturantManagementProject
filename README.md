@@ -17,6 +17,10 @@
 
 ### To do list (domenica)
 
+- gestione localizzazione in us (solo se hai finito le task precedenti entor la mattinata di domenica) -> _Paolo_
+- stampare lista piatti per categoria -> _Ludo_
+- completare frontend ordini -> _Ludo_
+
 **IL RESTO LO DOBBIAMO FARE DOPO IL MERGE DEI NOSTRI BRANCH**
 
 - Dopo merge branch palo e ludo:
@@ -42,3 +46,12 @@
   - se non ci sono piatti per quella categoria
 - gestione localizzazione in us (solo se hai finito le task precedenti entor la mattinata di domenica) -> _Paolo_
 - refactor file manager + concorrenza file
+  - singleton per admin app -> _Ludo_
+  - revisione di tutti i file manager e dei loro csv (con creazione dei file con seed iniziali) -> _Paolo_
+  - problema stampa dentro il csv check, viene stampato il tipo del dictonary -> _Paolo_
+
+### To do list (domenica)
+
+- recap lavoro
+- iniziare gestine tavoli, ordini dai tavoli e metodo pagamento (quindi stampare check per nome o codice tavolo)
+- capire quali test effetuare per lunedi

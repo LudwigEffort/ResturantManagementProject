@@ -41,9 +41,18 @@ namespace ResturantManagementLibrary
                         StartDishMenu();
                         break;
                     case 3: //? edit a dish
-                        Console.Clear();
-                        Console.WriteLine($"Not implement...");
-                        mainMenu.StartMainMenu();
+                        MenuUtils.ShowDishes(dishes);
+                        Console.WriteLine("Insert the name of the dish you wish to edit");
+                        string tempName = Console.ReadLine();
+                        if (dishFileManager.DishFound(tempName))
+                        {
+                            EditDishForm(tempName);
+                        }
+                        else
+                        {
+                            Console.WriteLine("ERROR: Name not contained \n");
+                            mainMenu.StartMainMenu();
+                        }
                         break;
                     case 4: //? delite a dish
                         Console.Clear();
@@ -78,8 +87,8 @@ namespace ResturantManagementLibrary
             Console.WriteLine($"Enter a description of dish");
             string description = Console.ReadLine();
 
-            Console.WriteLine($"Enter a price of dish");
-            double price = Convert.ToDouble(Console.ReadLine()); //TODO: manage exception
+            string checkPrice = "Enter a price of dish";
+            double price = DoubleControl(checkPrice); //TODO: manage exception
 
             CategoryList category = MenuUtils.ChoiseCategory();
 
@@ -131,7 +140,93 @@ namespace ResturantManagementLibrary
             return selectedIngredients;
         }
 
+        // DA SPOSTARE NEGLI UTILS - CONTROLLO INPUT
+        public double DoubleControl(string checkPrice)
+        {
+            string userInput;
+            double number;
+
+            do
+            {
+                Console.WriteLine(checkPrice);
+                userInput = Console.ReadLine();
+                if (!double.TryParse(userInput, out _))
+                {
+                    Console.WriteLine("Input Error, try again");
+                }
+            } while (!double.TryParse(userInput, out number));
+
+            return number;
+        }
+
         //? EDIT
+        public void EditDishForm(string name)
+        {
+            string[] options =
+            {
+                "1 - Chage name",
+                "2 - Change description",
+                "3 - Change Price",
+                "4 - Change type of category",
+                "5 - Change ingredients (separated by comma)",
+                "0 - Exit"
+            };
+            string newValue;
+
+            int selectOption;
+
+            do
+            {
+                Console.WriteLine($"Insert new data for the dish: {name}");
+                MenuUtils.ShowMenuOption(options);
+                selectOption = MenuUtils.ReadChoise();
+                switch (selectOption)
+                {
+                    case 1:
+                        Console.WriteLine("Insert the new name: ");
+                        newValue = Console.ReadLine();
+                        dishFileManager.EditDishDB(name, selectOption, newValue);
+                        EditDishForm(newValue);
+                        break;
+
+                    case 2:
+                        Console.WriteLine("Insert a new description");
+                        newValue = Console.ReadLine();
+                        dishFileManager.EditDishDB(name, selectOption, newValue);
+                        break;
+
+                    case 3:
+                        newValue = "Insert the new price";
+                        double price = DoubleControl(newValue);
+                        dishFileManager.EditDishDB(name, selectOption, price);
+                        break;
+
+                    case 4:
+                        Console.WriteLine("Insert a new category");
+                        CategoryList categoryList = MenuUtils.ChoiseCategory();
+                        dishFileManager.EditDishDB(name, selectOption, categoryList);
+                        break;
+
+                    case 5:
+                        Console.WriteLine("Insert new ingredients (separated by ';')");
+                        PrintIngredient();
+                        newValue = Console.ReadLine();
+                        dishFileManager.EditDishDB(name, selectOption, newValue);
+                        break;
+
+                    case 0: //? back to main menu
+                        mainMenu.StartMainMenu();
+                        break;
+
+                    default:
+                        Console.WriteLine($"Wrong option!");
+                        break;
+                }
+            } while (
+                    selectOption != 0
+                    );
+
+        }
 
         //? DELITE
 
