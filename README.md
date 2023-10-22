@@ -10,34 +10,28 @@
 
 ### To do list (SABATO)
 
-- frontend edit (resturant app) -> _Paolo_
-- passare nomi e ingredienti al posto dei valori numerici della lista enu -> _Palo_
+- **DONE** frontend edit (resturant app) -> _Paolo_
 - **DONE** stampare lista piatti per categoria -> _Ludo_
 - **DONE** completare frontend ordini -> _Ludo_
 
 ### To do list (domenica)
 
-- gestione localizzazione in us (solo se hai finito le task precedenti entor la mattinata di domenica) -> _Paolo_
-- stampare lista piatti per categoria -> _Ludo_
-- completare frontend ordini -> _Ludo_
-
-**IL RESTO LO DOBBIAMO FARE DOPO IL MERGE DEI NOSTRI BRANCH**
-
 - Dopo merge branch palo e ludo:
-
   - **DONE** singleton per admin app -> _Ludo_
   - problema stampa dentro il csv check, viene stampato il tipo del dictonary -> _Paolo_
 
-- RECAP LAVORO
+### To do list (domenica)
+
+#### RECAP LAVORO
+
 - iniziare gestine tavoli, ordini dai tavoli e metodo pagamento (quindi stampare check per nome o codice tavolo)
 - capire quali test effetuare per lunedi
-- come gestire precedenza file
-- fix bug con gli switch case dei menu, quando sbaglio numero delle opzioni, esplode tutto
+- fix bug con gli switch case dei menu, quando sbaglio numero delle opzioni, esplode tutto -> _Polo_
 - **TODO** fare frontend ristorante per gestione ordini, quindi crare gli ordini (gestione ordine dal tavolo, ti spiego come fare), stampare gli ordini dal database (gestire problema dei tipo generics dentro il file csv) -> _Paolo_
 
 ### Dopo la consegna
 
-- **FARE LA DOCUMENTAZIONE PER LA PRESENTAZIONE, FACENDO UN RIASSUNTO DEL NOSTO LAVORO E SISTEMANDO LO SCHEMA DEL' UML, QUNDI SPOSTIAMO QUESTO FILE CON I TODO DENTRO LA DIR DOCUMENTATION, E SISTEMIAMO IL README.md (_Ludo_ lo farà in orgmode e lo converto in md).**
+**FARE LA DOCUMENTAZIONE PER LA PRESENTAZIONE, FACENDO UN RIASSUNTO DEL NOSTO LAVORO E SISTEMANDO LO SCHEMA DEL' UML, QUNDI SPOSTIAMO QUESTO FILE CON I TODO DENTRO LA DIR DOCUMENTATION, E SISTEMIAMO IL README.md (_Ludo_ lo farà in orgmode e lo converto in md).**
 
 ### Solo se c'è tempo
 
@@ -45,13 +39,7 @@
   - gestire se voglio ordinare piu piatti da diverse categorie
   - se non ci sono piatti per quella categoria
 - gestione localizzazione in us (solo se hai finito le task precedenti entor la mattinata di domenica) -> _Paolo_
-- refactor file manager + concorrenza file
+- refactor file manager + concorrenza file (**precedenza file**)
   - singleton per admin app -> _Ludo_
   - revisione di tutti i file manager e dei loro csv (con creazione dei file con seed iniziali) -> _Paolo_
   - problema stampa dentro il csv check, viene stampato il tipo del dictonary -> _Paolo_
-
-### To do list (domenica)
-
-- recap lavoro
-- iniziare gestine tavoli, ordini dai tavoli e metodo pagamento (quindi stampare check per nome o codice tavolo)
-- capire quali test effetuare per lunedi
