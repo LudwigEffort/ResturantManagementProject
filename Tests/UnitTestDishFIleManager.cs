@@ -1,30 +1,27 @@
+using System.Collections;
+using System.ComponentModel;
 using FileManager.Controller;
+using ResturantManagementLibrary;
+using static ResturantManagementLibrary.IngredientManager;
 
 namespace Tests;
 
 public class UnitTestDishFileManager
 {
-
+    DishFileManager dishFileManager;
     [SetUp]
     public void Setup()
     {
+        dishFileManager = new();
     }
 
     [Test]
-    public void CreateDishDb_WhenErrorOccurs_DoesNotThrowException()
+    public void ReadDish_ShouldReturnListOfDishes()
     {
-        DishFileManager dishFileManager = new();
+        List<Dish> dishesFromDb = dishFileManager.ReadDish();
 
-        try
-        {
-            dishFileManager.CreateDishDb();
-        }
-        catch (IOException ex)
-        {
-            StringAssert.Contains("An error occurred while creating file:", ex.Message);
-            return;
-        }
-
-        Assert.Fail("Expected IOException was not thrown.");
+        Assert.IsNotNull(dishesFromDb);
+        Assert.IsInstanceOf<List<Dish>>(dishesFromDb);
+        Assert.IsTrue(dishesFromDb.Count > 0);
     }
 }

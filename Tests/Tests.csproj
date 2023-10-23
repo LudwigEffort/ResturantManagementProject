@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FileManager\FileManager.csproj" />
+    <ProjectReference Include="..\ResturantManagementLibrary\ResturantManagementLibrary.csproj" />
   </ItemGroup>
 
 </Project>
