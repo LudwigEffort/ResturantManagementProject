@@ -17,7 +17,7 @@ namespace FileManager.Controller
                     using (StreamWriter file = File.CreateText(CheckDbPath))
                     {
                         file.WriteLine($"- Check Database");
-                        file.WriteLine($"Dishes | CustomerId | Amout | Tip | Tax | IsPaid");
+                        file.WriteLine($"Dishes | CustomerId | Amount | Tip | Tax | IsPaid");
                     }
                 }
             }
@@ -47,13 +47,16 @@ namespace FileManager.Controller
 
         //         var chunks = line.Split('|');
 
-        //         var checkStrings = chunks[0].Split('-');
+        //         var dishStrings = chunks[0].Split('-');
 
         //         Dictionary<Dish, int> orderedDishes = new();
-        //         foreach (var checkString in checkStrings)
+
+        //         foreach (var dishString in dishStrings)
         //         {
-        //             Dish dish = ParseDish(checkString);
-        //             orderedDishes.Add(dish, );
+        //             var dishChunks = dishString.Split('x');
+        //             Dish dish = new Dish { Name = dishChunks[0].Trim(),  };
+        //             int quantity = int.Parse(dishChunks[1]);
+        //             orderedDishes[dish] = quantity;
         //         }
         //         string customerId = chunks[1].Trim();
         //         double amount = double.Parse(chunks[2].Trim());
@@ -61,33 +64,33 @@ namespace FileManager.Controller
         //         double tax = double.Parse(chunks[4].Trim());
         //         bool isPaid = bool.Parse(chunks[5].Trim());
 
-        //         Check check = new(orderedDishes, customerId, amount, tip, tax, isPaid);
+        //         Check check = new(orderedDishes, customerId, amount, isPaid);
         //         checks.Add(check);
         //     }
         //     return checks;
         // }
 
         //? read dish list into check
-        private Dish ParseDish(string csvString)
-        {
-            var dishChunks = csvString.Split(',');
+        // private Dish ParseDish(string csvString)
+        // {
+        //     var dishChunks = csvString.Split(',');
 
-            string name = dishChunks[0].Trim();
-            string description = dishChunks[1].Trim();
-            double price = double.Parse(dishChunks[2].Trim());
-            Dish.CategoryList categoryList = Enum.TryParse(dishChunks[3].Trim(), out Dish.CategoryList parsedCategory) ? parsedCategory : Dish.CategoryList.NotCategory;
-            var ingredientStrings = dishChunks[4].Split(';');
-            List<IngredientManager.Ingredient> ingredients = new();
+        //     string name = dishChunks[0].Trim();
+        //     string description = dishChunks[1].Trim();
+        //     double price = double.Parse(dishChunks[2].Trim());
+        //     Dish.CategoryList categoryList = Enum.TryParse(dishChunks[3].Trim(), out Dish.CategoryList parsedCategory) ? parsedCategory : Dish.CategoryList.NotCategory;
+        //     var ingredientStrings = dishChunks[4].Split(';');
+        //     List<IngredientManager.Ingredient> ingredients = new();
 
-            foreach (var ingredientString in ingredientStrings)
-            {
-                if (Enum.TryParse(ingredientString.Trim(), out IngredientManager.Ingredient parsedIngredient))
-                {
-                    ingredients.Add(parsedIngredient);
-                }
-            }
-            return new Dish(name, description, price, categoryList, ingredients);
-        }
+        //     foreach (var ingredientString in ingredientStrings)
+        //     {
+        //         if (Enum.TryParse(ingredientString.Trim(), out IngredientManager.Ingredient parsedIngredient))
+        //         {
+        //             ingredients.Add(parsedIngredient);
+        //         }
+        //     }
+        //     return new Dish(name, description, price, categoryList, ingredients);
+        // }
 
         //? make a order
         public void CreateDishOrder(Dictionary<Dish, int> selectedMenu, string customerId)
@@ -97,7 +100,7 @@ namespace FileManager.Controller
             double taxed = check.CalcTax(amount);
             double tipsed = check.CalcTips(amount);
             amount = amount + taxed + tipsed;
-            AddCheck(selectedMenu, customerId, amount, taxed, tipsed, true);
+            AddCheck(selectedMenu, customerId, amount, tipsed, taxed, true);
         }
 
         //? make a check
@@ -105,7 +108,7 @@ namespace FileManager.Controller
         {
             using var output = File.AppendText(CheckDbPath);
             string dishlist = string.Join(", ", orderedDishes.Select(kv => $"{kv.Key.Name} x{kv.Value}"));
-            output.WriteLine($"{dishlist} | {customerId} | {amount} | {tip} | {tax} | {isPaid}");
+            output.WriteLine($"{dishlist} | {customerId} | {amount} | {tax} | {tip} | {isPaid}");
         }
     }
 }

@@ -5,6 +5,7 @@ namespace ResturantManagementLibrary
     class OrderMenu
     {
         MainMenu mainMenu = new();
+        MenuUtils menuUtils = new();
         ReservationTableFileManager reservationTableFileManager = new();
         CheckFileManager checkFileManager = new();
         DishFileManager dishFileManager = new();
@@ -12,11 +13,13 @@ namespace ResturantManagementLibrary
         public void StartOrderMenu()
         {
             dishFileManager.CreateDishDb();
+            // List<Check> checks = checkFileManager.ReadCheck();
             Console.Clear();
 
             string[] options =
             {
                 "1. Make a order",
+                // "2. Print all orders",
                 "0. Back to main menu"
             };
 
@@ -31,6 +34,9 @@ namespace ResturantManagementLibrary
                     case 1: //? start menu
                         CreateOrderTableForm();
                         break;
+                    // case 2:
+                    // menuUtils.ShowCheks(checks);
+                    // break;
                     case 0:
                         Console.Clear();
                         Console.WriteLine($"Backing to main menu...");

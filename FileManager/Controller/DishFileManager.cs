@@ -5,7 +5,9 @@ namespace FileManager.Controller
 {
     public class DishFileManager
     {
-        private const string dishDbPath = "../FileManager/Database/DishDb.csv";
+        //private const string dishDbPath = "/FileManager/Database/DishDb.csv";
+
+        private const string dishDbPath = "/home/ludwig/workingRepos/ResturantManagementProject/FileManager/Database/DishDb.csv";
         public void CreateDishDb()
         {
             //? If File doesn't exist, create a new one

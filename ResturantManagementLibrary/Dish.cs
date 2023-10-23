@@ -16,7 +16,7 @@ namespace ResturantManagementLibrary
         public string Description { get; set; }
         public double Price; //TODO: to private
 
-        public CategoryList Category;
+        public CategoryList Category { get; set; }
         public List<IngredientManager.Ingredient> Ingredients;
 
         public Dish(string name, string description, double price, CategoryList category, List<IngredientManager.Ingredient> ingredients)
