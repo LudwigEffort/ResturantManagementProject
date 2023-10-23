@@ -49,4 +49,20 @@ public class UnitTestDishFileManager
         );
         Assert.IsTrue(dishAdded, "The dish was not added to the db.");
     }
+
+    [Test]
+    public void DishFound_ReturnTrueIfExists()
+    {
+        string dishName = "Pollo";
+        bool dishFound = dishFileManager.DishFound(dishName);
+        Assert.IsTrue(dishFound, "The existing dish was not found in db.");
+    }
+
+    [Test]
+    public void DishFound_ReturnFalseIfNotExists()
+    {
+        string dishName = "Kebab";
+        bool notDishFound = dishFileManager.DishFound(dishName);
+        Assert.IsFalse(notDishFound, "The non existing dish was found in db.");
+    }
 }
