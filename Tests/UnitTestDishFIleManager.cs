@@ -65,4 +65,33 @@ public class UnitTestDishFileManager
         bool notDishFound = dishFileManager.DishFound(dishName);
         Assert.IsFalse(notDishFound, "The non existing dish was found in db.");
     }
+
+    [Test]
+    public void EditDishDB_EditDishName()
+    {
+        string notExistentDishName = "Pollo";
+        int selectOption = 1;
+        string newDisName = "Pollo al curry";
+
+        dishFileManager.EditDishDB(notExistentDishName, selectOption, newDisName);
+
+        bool dishFounded = dishFileManager.DishFound(newDisName);
+        Assert.IsTrue(dishFounded, "Dish name was not found");
+
+    }
+
+    [Test]
+    public void EditDishDB_EditDishNameNotFound()
+    {
+        string notExistentDishName = "Ramen";
+        int selectOption = 1;
+        string newDisName = "Ramen di Pesce";
+
+        dishFileManager.EditDishDB(notExistentDishName, selectOption, newDisName);
+
+        bool dishFounded = dishFileManager.DishFound(newDisName);
+        Assert.IsFalse(dishFounded, "Non existent dish name");
+
+    }
+
 }
