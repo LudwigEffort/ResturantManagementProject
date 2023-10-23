@@ -30,9 +30,6 @@ namespace ResturantManagementLibrary
             TableFileManager tableFileManager = new();
             tableFileManager.CreateTablesDb();
 
-            MenuUtils.ShowMenuOption(options);
-            selectOption = MenuUtils.ReadChoise();
-
             do
             {
                 MenuUtils.ShowMenuOption(options);

@@ -149,5 +149,34 @@ namespace ResturantManagementLibrary
             return customer.CustomerId;
 
         }
+
+        // public void ShowCheks(List<Check> checks){
+        //     Console.WriteLine($"List of Dishes:");
+        //     Console.WriteLine($"---------------------");
+        //     foreach (var check in checks)
+        //     {
+        //         Console.WriteLine($"Name: {check.OrderedDishes}");
+        //         Console.WriteLine($"---------------------");
+        //     }
+        // }
+
+        public void ShowTable(List<Table> tables){
+            Console.WriteLine($"List of Tables:");
+            Console.WriteLine($"---------------------");
+            foreach (var table in tables)
+            {
+                Console.WriteLine($"\nId Table: {table.TableId}");
+                Console.WriteLine($"Table Capacity: {table.Capacity}");
+                if (table.IsAvailable)
+                {                    
+                    Console.WriteLine($"Is Avaiable");
+                }
+                else if (!table.IsAvailable)
+                {
+                    Console.WriteLine($"Not Avaiable");
+                }
+            }
+            Console.WriteLine($"---------------------");
+        }
     }
 }

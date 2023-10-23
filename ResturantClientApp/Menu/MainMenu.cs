@@ -26,9 +26,6 @@ namespace ResturantClientApp
             };
             int selectOption;
 
-            MenuUtils.ShowMenuOption(options);
-            selectOption = MenuUtils.ReadChoise();
-
             do
             {
                 ResturantManagementLibrary.MenuUtils.ShowMenuOption(options);
