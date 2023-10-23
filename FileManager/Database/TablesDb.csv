@@ -1,10 +1,10 @@
 - Tables Database
-TableId | Capacity
-TableA1 | 2
-TableA2 | 2
-TableB1 | 4
-TableB2 | 4
-TableC1 | 8
-TableC2 | 8
-TableD1 | 10
-TableD2 | 10
+TableId    |    Capacity    |    IsAvailable 
+TableA1    |    2    |    true
+TableA2    |    2    |    true
+TableB1    |    4    | false
+TableB2    |    4    |    true
+TableC1    |    8    |    true
+TableC2    |    8    |    true
+TableD1    |    10    |  false
+TableD2    |    10    |    true

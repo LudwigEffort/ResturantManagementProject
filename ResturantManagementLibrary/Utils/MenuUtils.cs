@@ -32,12 +32,29 @@ namespace ResturantManagementLibrary
             Console.WriteLine($"---------------------");
             foreach (var table in tables)
             {
-                Console.WriteLine($"Table Id: {table.TableId}");
-                Console.WriteLine($"Table Capacity: {table.Capacity}");
-                Console.WriteLine($"---------------------");
+                if (table.IsAvailable == true)
+                {
+                    Console.WriteLine($"Table Id: {table.TableId}");
+                    Console.WriteLine($"Table Capacity: {table.Capacity}");
+                    Console.WriteLine($"---------------------");
+                }
             }
         }
 
+        //* Print reservations
+        public static void PrintAllReservation(List<Reservation> reservations)
+        {
+            Console.WriteLine($"List of Reservations: ");
+            Console.WriteLine($"---------------------");
+            foreach (var reservation in reservations)
+            {
+                Console.WriteLine($"CustomerId: {reservation.CustomerId}");
+                Console.WriteLine($"TableId: {reservation.TableId}");
+                Console.WriteLine($"StartTime: {reservation.StartDate}");
+                Console.WriteLine($"EndTime: {reservation.EndDate}");
+                Console.WriteLine($"---------------------");
+            }
+        }
 
         //* Dish utils
 

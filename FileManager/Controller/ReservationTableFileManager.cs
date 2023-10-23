@@ -25,26 +25,38 @@ namespace FileManager.Controller
             }
         }
 
-        // public List<Reservation> ReadReservation()
-        // {
-        //     List<Reservation> reservations = new();
-        //     using var input = File.OpenText(reservationDbPath);
-        //     input.ReadLine();
-        //     input.ReadLine();
+        public List<Reservation> ReadReservation()
+        {
+            List<Reservation> reservations = new List<Reservation>();
+            using var input = File.OpenText(reservationDbPath);
 
-        //     while (true)
-        //     {
-        //         string? line = input.ReadLine();
+            // Skip the header lines
+            input.ReadLine();
+            input.ReadLine();
 
-        //         if (line is null)
-        //         {
-        //             break;
-        //         }
+            while (true)
+            {
+                string? line = input.ReadLine();
 
-        //         var chunks = line.Split('|');
+                if (line is null)
+                {
+                    break;
+                }
 
-        //     }
-        // }
+                var chunks = line.Split('|');
+
+                string customerId = chunks[0].Trim();
+                string tableId = chunks[1].Trim();
+                DateTime startTime = DateTime.Parse(chunks[2].Trim());
+                DateTime endTime = DateTime.Parse(chunks[3].Trim());
+
+                Reservation reservation = new(customerId, tableId, startTime, endTime);
+                reservations.Add(reservation);
+            }
+
+            return reservations;
+        }
+
 
         public void AddReservation(string customerId, string tableId, DateTime startDate, DateTime endDate)
         {

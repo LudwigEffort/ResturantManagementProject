@@ -24,11 +24,11 @@ namespace ResturantManagementLibrary
 
             Console.WriteLine($"Dish Menu:");
 
-            MenuUtils.ShowMenuOption(options);
-            selectOption = MenuUtils.ReadChoise();
 
             do
             {
+                MenuUtils.ShowMenuOption(options);
+                selectOption = MenuUtils.ReadChoise();
                 switch (selectOption)
                 {
                     case 1: //? create a dish
@@ -100,8 +100,6 @@ namespace ResturantManagementLibrary
             Console.WriteLine($"This {name} dish was created.");
             StartDishMenu();
         }
-
-
 
         public void PrintIngredient()
         {

@@ -31,6 +31,8 @@ namespace ResturantClientApp
 
             do
             {
+                ResturantManagementLibrary.MenuUtils.ShowMenuOption(options);
+                selectOption = ResturantManagementLibrary.MenuUtils.ReadChoise();
                 switch (selectOption)
                 {
                     case 1:

@@ -7,7 +7,8 @@ namespace ResturantClientApp
     class ReservationTableMenu
     {
         MainMenu mainMenuClient = MainMenu.GetInstance();
-        //TODO: add reservation file manager
+        ReservationTableFileManager reservationTableFileManager = new();
+        TableFileManager tableFileManager = new();
 
         public void StartReservationMenu()
         {
@@ -46,9 +47,6 @@ namespace ResturantClientApp
 
         public void CreateReservationTableForm(string customerId)
         {
-            ReservationTableFileManager reservationTableFileManager = new();
-
-            TableFileManager tableFileManager = new();
             List<Table> tables = tableFileManager.ReadTable();
 
             MenuUtils.ShowAvailableTables(tables);
@@ -56,12 +54,13 @@ namespace ResturantClientApp
             Console.WriteLine($"Enter a table id: ");
             string tableId = Console.ReadLine();
 
+            tableFileManager.ChangeStatusTable(tableId);
+
+            //TODO: add select time form
             DateTime startTime = DateTime.Now;
-            DateTime endTime = startTime.AddHours(2);
+            DateTime endTime = startTime.AddHours(4);
 
             reservationTableFileManager.AddReservation(customerId, tableId, startTime, endTime);
-
-            //? make a reservation with method in reservation file manager
         }
     }
 }

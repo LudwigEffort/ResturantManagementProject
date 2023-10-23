@@ -1,0 +1,4 @@
+- Check Database
+Dishes | CustomerId | Amout | Tip | Tax | IsPaid
+Pollo x1 | Paolo Napoli | 63.5 | 11 | 2.5 | True
+Pollo x3, Giorgino x2, Insalata Caesar x4 | Marione | 362.712 | 62.83200000000001 | 14.280000000000001 | True

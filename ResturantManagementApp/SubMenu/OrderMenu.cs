@@ -1,21 +1,18 @@
-using System.Runtime.ConstrainedExecution;
 using FileManager.Controller;
-using ResturantManagementLibrary;
 
-namespace ResturantClientApp
+namespace ResturantManagementLibrary
 {
-    class OrderDishMenu
+    class OrderMenu
     {
-        MainMenu mainMenuClient = MainMenu.GetInstance();
-        DishFileManager dishFileManager = new();
+        MainMenu mainMenu = new();
+        ReservationTableFileManager reservationTableFileManager = new();
         CheckFileManager checkFileManager = new();
+        DishFileManager dishFileManager = new();
 
-        public void StartDishMenu()
+        public void StartOrderMenu()
         {
-            checkFileManager.CreateCheckDb();
+            dishFileManager.CreateDishDb();
             Console.Clear();
-
-            string customerId = MenuUtils.CustomerForm();
 
             string[] options =
             {
@@ -32,12 +29,12 @@ namespace ResturantClientApp
                 switch (selectOption)
                 {
                     case 1: //? start menu
-                        CreateDishOrderForm(customerId);
+                        CreateOrderTableForm();
                         break;
                     case 0:
                         Console.Clear();
                         Console.WriteLine($"Backing to main menu...");
-                        mainMenuClient.StartMainMenu();
+                        mainMenu.StartMainMenu();
                         break;
                     default:
                         Console.WriteLine($"Wrong option!");
@@ -45,18 +42,18 @@ namespace ResturantClientApp
                 }
             } while (selectOption != 1 && selectOption != 0);
 
+
         }
 
-        public void CreateDishOrderForm(string customerId)
+        public void CreateOrderTableForm()
         {
             Console.Clear();
 
-            CheckFileManager checkFileManager = new();
+            List<Reservation> reservations = reservationTableFileManager.ReadReservation();
             List<Dish> dishes = dishFileManager.ReadDish();
-
             Dictionary<Dish, int> selectedMenu = new Dictionary<Dish, int>();
 
-            string[] options = { "1. Print all dish", "2. Print by category", "0. Back." };
+            string[] options = { "1. Print reservation", "0. Back..." };
             int selectOption;
 
             do
@@ -67,22 +64,34 @@ namespace ResturantClientApp
                 {
                     case 1:
                         Console.WriteLine($"Printing all dishes: ");
-                        MenuUtils.ShowDishes(dishes);
-                        break;
-                    case 2:
-                        Console.WriteLine($"Printing by category: ");
-                        MenuUtils.ShowDishes(MenuUtils.ShowDishesByCategory(dishes));
+                        MenuUtils.PrintAllReservation(reservations);
                         break;
                     case 0:
                         Console.WriteLine($"Exit from order dish...");
-                        StartDishMenu();
                         break;
                     default:
                         Console.WriteLine($"Wrong option!");
                         break;
                 }
 
-            } while (selectOption != 1 && selectOption != 2 && selectOption != 0);
+            } while (selectOption != 1 && selectOption != 0);
+
+            Console.WriteLine("Select a reservation (by table ID):");
+            string tableId = Console.ReadLine();
+            string customerId = "not found"; //TODO: manage
+
+            Reservation selectedReservation = reservations.FirstOrDefault(reservation => reservation.TableId.Equals(tableId, StringComparison.OrdinalIgnoreCase));
+
+            if (selectedReservation != null)
+            {
+                customerId = selectedReservation.CustomerId + tableId;
+            }
+            else
+            {
+                Console.WriteLine("Table not found. Try again.");
+            }
+
+            MenuUtils.ShowDishes(dishes);
 
             while (true)
             {
@@ -106,11 +115,10 @@ namespace ResturantClientApp
                 {
                     Console.WriteLine($"Dish not found. Try again.");
                 }
-
-
             }
             checkFileManager.CreateDishOrder(selectedMenu, customerId);
-            mainMenuClient.StartMainMenu();
+            mainMenu.StartMainMenu();
         }
+
     }
 }
